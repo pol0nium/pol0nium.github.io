@@ -1,36 +1,9 @@
 {
   "fpsLimit": 60,
   "backgroundMode": {
-    "enable": true,
-    "zIndex": -2
-  },
-  "interactivity": {
-    "events": {
-      "resize": false
-    },
-    "modes": {
-      "bubble": {
-        "distance": 400,
-        "duration": 2,
-        "opacity": 0.8,
-        "size": 40
-      },
-      "grab": {
-        "distance": 400
-      }
-    }
+    "enable": true
   },
   "particles": {
-    "color": {
-      "value": "#ffffff"
-    },
-    "links": {
-      "color": {
-        "value": "#000"
-      },
-      "distance": 150,
-      "opacity": 0.4
-    },
     "move": {
       "attract": {
         "rotate": {
@@ -74,78 +47,6 @@
     },
     "shape": {
       "options": {
-        "character": {
-          "fill": false,
-          "font": "Verdana",
-          "style": "",
-          "value": "*",
-          "weight": "400"
-        },
-        "char": {
-          "fill": false,
-          "font": "Verdana",
-          "style": "",
-          "value": "*",
-          "weight": "400"
-        },
-        "polygon": {
-          "sides": 5
-        },
-        "star": {
-          "sides": 5
-        },
-        "image": [
-          {
-            "src": "assets/img/Cylindre1.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Cylindre2.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/DoublePlanete.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Etoile1.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Etoile2.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Planete1.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Planete2.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Planete3.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Sphere1.png",
-            "width": 32,
-            "height": 32
-          },
-          {
-            "src": "assets/img/Sphere2.png",
-            "width": 32,
-            "height": 32
-          }
-        ],
         "images": [
           {
             "src": "assets/img/Cylindre1.png",
@@ -205,20 +106,10 @@
       "random": {
         "enable": true
       },
-      "value": 100,
+      "value": 200,
       "animation": {
         "minimumValue": 0.1,
         "speed": 40
-      }
-    },
-    "stroke": {
-      "color": {
-        "value": "#000000",
-        "animation": {
-          "enable": false,
-          "speed": 1,
-          "sync": true
-        }
       }
     }
   }
