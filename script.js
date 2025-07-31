@@ -103,13 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Ici vous pourriez ajouter du tracking analytics
             console.log('Bouton d\'achat cliqué');
             
-            // Optionnel : confirmation avant redirection
-            const confirmPurchase = confirm('Vous allez être redirigé vers la page de paiement sécurisée. Continuer ?');
-            if (!confirmPurchase) {
-                e.preventDefault();
-                return false;
-            }
-            
             // Le lien href se charge naturellement de la redirection
         });
     }
