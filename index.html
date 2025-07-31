@@ -15,11 +15,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Stripe Buy Button -->
-    <script async
-        src="https://js.stripe.com/v3/buy-button.js">
-    </script>
-    
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -277,11 +272,10 @@
                         </div>
                     </div>
                     <div class="pricing-cta">
-                        <stripe-buy-button
-                            buy-button-id="buy_btn_1Rr0NZCWug3z6jzVCqLKS1rs"
-                            publishable-key="pk_test_51OC1BaCWug3z6jzVg4RAuUVjUUfh25RTlawonFbelqUX0v868WvJDb92Y8tO66WO5iPbvt4eL0RoAXKQD3w00yup00joEv9nm7"
-                        >
-                        </stripe-buy-button>
+                        <a href="https://buy.stripe.com/test_6oU8wO25J1qba3beVuaAw00" class="btn btn-primary btn-xl" id="buy-button">
+                            Acheter maintenant
+                            <span class="btn-arrow">→</span>
+                        </a>
                         <p class="security-note">🔒 Paiement 100% sécurisé avec Stripe</p>
                     </div>
                 </div>
