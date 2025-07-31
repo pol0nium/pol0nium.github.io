@@ -336,7 +336,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Préchargement des images importantes
     function preloadImages() {
         const importantImages = [
-            // Ajoutez ici les URLs des vraies images quand elles seront disponibles
+            'https://pol0nium.github.io/assets/ludovic-1.webp',
+            'https://pol0nium.github.io/assets/ludovic.jpg'
         ];
         
         importantImages.forEach(src => {
