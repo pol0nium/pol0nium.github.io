@@ -256,33 +256,56 @@ body {
 
 .hero-stats {
     display: flex;
-    gap: 40px;
+    gap: 48px;
     margin-bottom: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .stat {
     text-align: center;
+    position: relative;
+    padding: 0 20px;
+}
+
+.stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, var(--gray-medium), transparent);
 }
 
 .stat-number {
     display: block;
     font-family: var(--font-heading);
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 36px;
+    font-weight: 800;
     color: var(--primary-color);
     line-height: 1;
+    margin-bottom: 4px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .stat-label {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-light);
-    font-weight: 500;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .hero-cta {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    align-items: center;
 }
 
 .price-highlight {
@@ -877,8 +900,27 @@ body {
     
     .hero-stats {
         justify-content: center;
-        gap: 20px;
+        gap: 32px;
         margin-bottom: 24px;
+        flex-wrap: wrap;
+    }
+    
+    .stat {
+        padding: 0 16px;
+        min-width: 100px;
+    }
+    
+    .stat:not(:last-child)::after {
+        right: -16px;
+        height: 30px;
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+    
+    .stat-label {
+        font-size: 13px;
     }
     
     .coach-image {
@@ -1057,9 +1099,27 @@ body {
     }
     
     .hero-stats {
-        flex-direction: column;
-        gap: 12px;
+        flex-direction: row;
+        gap: 24px;
         margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .stat {
+        padding: 0 12px;
+        min-width: 80px;
+    }
+    
+    .stat:not(:last-child)::after {
+        display: none;
+    }
+    
+    .stat-number {
+        font-size: 24px;
+    }
+    
+    .stat-label {
+        font-size: 12px;
     }
     
     .hero-content {
