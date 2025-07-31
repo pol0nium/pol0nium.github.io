@@ -161,8 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         .nav {
                             position: absolute;
                             top: 100%;
-                            left: 0;
-                            right: 0;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 100vw;
                             background-color: white;
                             flex-direction: column;
                             box-shadow: var(--shadow);
@@ -171,13 +172,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             border-radius: 0 0 12px 12px;
                             z-index: 20;
                             opacity: 0;
-                            transform: translateY(-10px);
+                            transform: translateX(-50%) translateY(-10px);
                             transition: opacity 0.2s ease, transform 0.2s ease;
                         }
                         .nav.mobile-nav-open {
                             display: flex !important;
                             opacity: 1;
-                            transform: translateY(0);
+                            transform: translateX(-50%) translateY(0);
                         }
                         .mobile-menu-btn {
                             display: block !important;
