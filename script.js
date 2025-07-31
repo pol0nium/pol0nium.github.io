@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const nav = document.querySelector('.nav');
             if (nav && nav.classList.contains('mobile-nav-open')) {
                 nav.classList.remove('mobile-nav-open');
-                console.log('Mobile menu closed after navigation');
             }
             
             const targetId = this.getAttribute('href');
@@ -101,8 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Analytics et tracking (simulé)
         buyButton.addEventListener('click', function(e) {
             // Ici vous pourriez ajouter du tracking analytics
-            console.log('Bouton d\'achat cliqué');
-            
             // Le lien href se charge naturellement de la redirection
         });
     }
@@ -148,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 e.preventDefault();
                 e.stopPropagation();
                 nav.classList.toggle('mobile-nav-open');
-                console.log('Menu button clicked, nav open:', nav.classList.contains('mobile-nav-open'));
             });
             
             // Styles pour le menu mobile
@@ -362,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('load', function() {
             setTimeout(() => {
                 const perfData = performance.getEntriesByType('navigation')[0];
-                console.log('Temps de chargement:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+                // Performance data available for monitoring if needed
             }, 0);
         });
     }
@@ -378,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('keyboard-navigation');
     });
     
-    console.log('Script de la landing page Ludovic Teles chargé avec succès!');
+    // Script de la landing page Ludovic Teles chargé avec succès
 });
 
 // Fonction utilitaire pour le lazy loading (si nécessaire plus tard)
