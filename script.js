@@ -30,8 +30,80 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: targetElement.offsetTop - headerHeight - extraOffset,
                     behavior: 'smooth'
                 });
+                
+                // Highlight the target section briefly
+                if (targetElement.classList.contains('legal-section')) {
+                    targetElement.style.transition = 'background-color 0.3s ease';
+                    targetElement.style.backgroundColor = '#f0f9ff';
+                    setTimeout(() => {
+                        targetElement.style.backgroundColor = '';
+                    }, 2000);
+                }
             }
         });
+    });
+    
+    // Enhanced functionality for legal pages
+    const legalTocLinks = document.querySelectorAll('.legal-toc a');
+    const legalSections = document.querySelectorAll('.legal-section');
+    
+    // Update active TOC link on scroll
+    const legalObserverOptions = {
+        threshold: 0.3,
+        rootMargin: '-100px 0px -50% 0px'
+    };
+    
+    const legalObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+                
+                // Update active TOC link
+                legalTocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, legalObserverOptions);
+    
+    // Observe legal sections
+    legalSections.forEach(section => {
+        legalObserver.observe(section);
+    });
+    
+    // Add hover effects to legal sections
+    legalSections.forEach(section => {
+        section.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.12)';
+        });
+        
+        section.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '';
+        });
+    });
+    
+    // Add copy functionality for important notices
+    const legalNotices = document.querySelectorAll('.legal-notice');
+    legalNotices.forEach(notice => {
+        notice.addEventListener('click', function() {
+            const text = this.querySelector('p').textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                // Show a brief "copied" message
+                const originalContent = this.innerHTML;
+                this.innerHTML = '<h4>✅ Copié !</h4><p>Le texte a été copié dans le presse-papiers.</p>';
+                setTimeout(() => {
+                    this.innerHTML = originalContent;
+                }, 2000);
+            });
+        });
+        
+        // Add cursor pointer to indicate clickable
+        notice.style.cursor = 'pointer';
     });
     
     // Animation au scroll
