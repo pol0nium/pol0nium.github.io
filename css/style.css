@@ -467,15 +467,7 @@ section {
 }
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 0.75rem;
-    letter-spacing: 0.3rem;
-    text-transform: uppercase;
-    color: rgba(47, 62, 70, 0.5);
+    display: none;
 }
 
 .scroll-indicator__dot {
@@ -1137,10 +1129,6 @@ section {
 
     .hero-countdown {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .scroll-indicator {
-        display: none;
     }
 }
 
