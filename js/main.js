@@ -179,7 +179,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (bookingBtn) {
         bookingBtn.addEventListener('click', (event) => {
-            placeholderHandler(event, 'Les réservations d’hébergement ouvriront prochainement. Nous vous tiendrons informés par e-mail. ✦');
+            placeholderHandler(event, 'Les réservations d'hébergement ouvriront prochainement. Nous vous tiendrons informés par e-mail. ✦');
+        });
+    }
+
+    // ---------------------------
+    // Hero card interactions
+    // ---------------------------
+    const heroCards = document.querySelectorAll('.hero-card');
+    if (heroCards.length > 0) {
+        heroCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove active class from all cards
+                heroCards.forEach(c => c.classList.remove('active'));
+                // Add active class to clicked card
+                card.classList.add('active');
+            });
+        });
+
+        // Click outside to reset
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.hero-card')) {
+                heroCards.forEach(c => c.classList.remove('active'));
+            }
         });
     }
 });
