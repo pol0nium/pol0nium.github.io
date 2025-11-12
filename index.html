@@ -8,131 +8,300 @@
     <title>Mariage Anaïs & Matthias - 4 juillet 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">A & M</div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link active">Accueil</a></li>
-                <li><a href="hebergement.html" class="nav-link">Hébergement</a></li>
-                <li><a href="enfants.html" class="nav-link">Enfants</a></li>
-                <li><a href="acces.html" class="nav-link">Accès</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Carousel Section -->
-    <section class="carousel-section">
-        <div class="carousel-container">
-            <div class="carousel-slides">
-                <div class="carousel-slide active">
-                    <img src="images/placeholder1.svg" alt="Photo 1">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/placeholder2.svg" alt="Photo 2">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/placeholder3.svg" alt="Photo 3">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/placeholder4.svg" alt="Photo 4">
-                </div>
+<body class="theme-pearl">
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a class="nav-brand" href="index.html" aria-label="Retour à l'accueil">Anaïs & Matthias</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link active">Accueil</a></li>
+                    <li><a href="#programme" class="nav-link">Programme</a></li>
+                    <li><a href="#infos" class="nav-link">Informations</a></li>
+                    <li><a href="#rsvp" class="nav-link nav-link--accent">RSVP</a></li>
+                    <li><a href="hebergement.html" class="nav-link">Hébergement</a></li>
+                    <li><a href="enfants.html" class="nav-link">Enfants</a></li>
+                    <li><a href="acces.html" class="nav-link">Accès</a></li>
+                </ul>
             </div>
-            <button class="carousel-btn prev" id="prevBtn" aria-label="Image précédente">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M15 18l-6-6 6-6"/>
-                </svg>
-            </button>
-            <button class="carousel-btn next" id="nextBtn" aria-label="Image suivante">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M9 18l6-6-6-6"/>
-                </svg>
-            </button>
-            <div class="carousel-dots" id="carouselDots"></div>
-        </div>
-    </section>
+        </nav>
+    </header>
 
-    <!-- Title Section -->
-    <section class="title-section">
-        <div class="container">
-            <h1 class="main-title">Anaïs & Matthias</h1>
-            <p class="wedding-date">4 juillet 2026</p>
-            <div class="decorative-line"></div>
-        </div>
-    </section>
-
-    <!-- Schedule Section -->
-    <section class="schedule-section">
-        <div class="container">
-            <h2 class="section-title">Programme de la journée</h2>
-            <div class="schedule-grid">
-                <div class="schedule-card">
-                    <div class="schedule-time">11h00</div>
-                    <div class="schedule-content">
-                        <h3>Mariage civil</h3>
-                        <p>Mairie de Vanves</p>
+    <main>
+        <section class="hero" id="top">
+            <div class="hero-pattern" aria-hidden="true"></div>
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <p class="hero-kicker">Samedi 4 juillet 2026 · Normandie</p>
+                    <h1 class="hero-title">Anaïs & Matthias se disent oui</h1>
+                    <p class="hero-subtitle">Nous avons hâte de célébrer cette journée d’amour, de lumière et de joie entourés de ceux que nous aimons.</p>
+                    <div class="hero-cta">
+                        <a class="btn btn-primary" href="#rsvp">Confirmer ma présence</a>
+                        <a class="btn btn-outline" href="#programme">Découvrir le programme</a>
+                    </div>
+                    <div class="hero-countdown" id="countdown" aria-live="polite">
+                        <div class="countdown-item">
+                            <span class="count-number" data-unit="days">00</span>
+                            <span class="count-label">jours</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="count-number" data-unit="hours">00</span>
+                            <span class="count-label">heures</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="count-number" data-unit="minutes">00</span>
+                            <span class="count-label">minutes</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="count-number" data-unit="seconds">00</span>
+                            <span class="count-label">secondes</span>
+                        </div>
                     </div>
                 </div>
-                <div class="schedule-card">
-                    <div class="schedule-time">16h00</div>
-                    <div class="schedule-content">
-                        <h3>Vin d'honneur</h3>
-                        <p>La Grange de la Forge</p>
+                <div class="hero-gallery">
+                    <div class="hero-card hero-card--top">
+                        <img src="images/placeholder1.svg" alt="Souvenir d'Anaïs et Matthias">
+                        <div class="hero-card__caption">Un avant-goût de notre aventure</div>
                     </div>
-                </div>
-                <div class="schedule-card">
-                    <div class="schedule-time">19h00</div>
-                    <div class="schedule-content">
-                        <h3>Dîner</h3>
-                        <p>La Grange de la Forge</p>
+                    <div class="hero-card hero-card--middle">
+                        <img src="images/placeholder2.svg" alt="Un moment complice du couple">
+                        <div class="hero-card__caption">Complices depuis tant d'années</div>
                     </div>
-                </div>
-                <div class="schedule-card">
-                    <div class="schedule-time">23h30</div>
-                    <div class="schedule-content">
-                        <h3>Lancement du bal</h3>
-                        <p>La Grange de la Forge</p>
+                    <div class="hero-card hero-card--bottom">
+                        <img src="images/placeholder3.svg" alt="Anaïs et Matthias main dans la main">
+                        <div class="hero-card__caption">Prêts pour une nouvelle page</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Location Section -->
-    <section class="location-section">
-        <div class="container">
-            <h2 class="section-title">Lieu de réception</h2>
-            <div class="location-card">
-                <h3>La Grange de la Forge</h3>
-                <p class="location-address">9 Rue de l'Église<br>27420 Mouflaines</p>
-                <a href="acces.html" class="btn-secondary">Comment s'y rendre</a>
+            <div class="scroll-indicator" aria-hidden="true">
+                <span>Faire défiler</span>
+                <div class="scroll-indicator__dot"></div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- RSVP Section -->
-    <section class="rsvp-section">
-        <div class="container">
-            <h2 class="section-title">Répondez avant le 1er mai 2026</h2>
-            <p class="rsvp-text">Nous serions ravis de célébrer ce jour spécial avec vous !</p>
-            <a href="#" class="btn-primary" id="rsvpBtn"><span>Confirmer ma présence</span></a>
-            <p class="rsvp-note">Lien vers le formulaire à venir</p>
-        </div>
-    </section>
+        <section class="highlight-strip" id="infos">
+            <div class="container highlight-grid">
+                <article class="highlight-card">
+                    <p class="highlight-kicker">Cérémonie civile</p>
+                    <h3>Mairie de Vanves</h3>
+                    <p class="highlight-meta">11h00 · 13 Rue Jean Bleuzen</p>
+                    <p>Nous nous dirons “oui” officiellement entourés de nos familles proches.</p>
+                </article>
+                <article class="highlight-card">
+                    <p class="highlight-kicker">Réception</p>
+                    <h3>La Grange de la Forge</h3>
+                    <p class="highlight-meta">16h00 · Mouflaines</p>
+                    <p>Un écrin de verdure pour partager un vin d’honneur, un dîner raffiné et une fête lumineuse.</p>
+                </article>
+                <article class="highlight-card">
+                    <p class="highlight-kicker">Brunch du lendemain</p>
+                    <h3>Retour convivial</h3>
+                    <p class="highlight-meta">Dimanche matin</p>
+                    <p>On prolonge la magie autour d’un brunch champêtre. Les détails suivront dans votre convocation.</p>
+                </article>
+            </div>
+        </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mariage Anaïs & Matthias</p>
+        <section class="story-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Notre histoire</p>
+                    <h2 class="section-title">Deux cœurs, un chemin, mille sourires</h2>
+                    <p class="section-intro">Depuis notre rencontre, nous cultivons les petites attentions, les éclats de rire et l’envie d’explorer ensemble. Ce mariage est le reflet de ces moments précieux et de toutes les aventures à venir.</p>
+                </div>
+                <div class="story-grid">
+                    <div class="story-text">
+                        <p>Nous avons traversé des villes, des projets et des rêves à deux. Aujourd’hui, nous désirons célébrer cette étape entourés de nos proches, dans une atmosphère douce et festive, à notre image.</p>
+                        <p>Merci d’être à nos côtés pour écrire la suite de cette belle histoire. Nous vous promettons un week-end rempli de lumière, de musique, de surprises et de souvenirs impérissables.</p>
+                    </div>
+                    <ul class="story-timeline">
+                        <li>
+                            <span class="timeline-date">2016</span>
+                            <h3>Notre rencontre</h3>
+                            <p>Un dîner entre amis, un sourire partagé, et l’évidence de nos chemins qui s’entrecroisent.</p>
+                        </li>
+                        <li>
+                            <span class="timeline-date">2019</span>
+                            <h3>Notre premier “chez nous”</h3>
+                            <p>Des murs remplis de cadres, de playlists, et une douce impression de foyer.</p>
+                        </li>
+                        <li>
+                            <span class="timeline-date">2024</span>
+                            <h3>La demande</h3>
+                            <p>Une escapade surprise, un coucher de soleil, et cette question qui change tout.</p>
+                        </li>
+                        <li>
+                            <span class="timeline-date">2026</span>
+                            <h3>Une célébration solaire</h3>
+                            <p>Vous, nous, et une promesse de danser jusqu’à l’aube.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="programme-section" id="programme">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Programme</p>
+                    <h2 class="section-title">Une journée pensée pour vous</h2>
+                    <p class="section-intro">Chaque moment a été imaginé pour que vous puissiez profiter pleinement de la fête et vous laisser porter par la magie du lieu.</p>
+                </div>
+                <div class="programme-timeline">
+                    <article class="programme-step">
+                        <div class="programme-time">11h00</div>
+                        <div class="programme-body">
+                            <h3>Mairie de Vanves</h3>
+                            <p>Accueil des invités et cérémonie civile. Merci d’arriver quelques minutes en avance.</p>
+                        </div>
+                    </article>
+                    <article class="programme-step">
+                        <div class="programme-time">16h00</div>
+                        <div class="programme-body">
+                            <h3>Vin d’honneur</h3>
+                            <p>Bulles, ateliers gourmands et surprises sensorielles au cœur des jardins de la Grange.</p>
+                        </div>
+                    </article>
+                    <article class="programme-step">
+                        <div class="programme-time">19h00</div>
+                        <div class="programme-body">
+                            <h3>Dîner sous les étoiles</h3>
+                            <p>Un menu généreux, des toasts émouvants et une parenthèse hors du temps.</p>
+                        </div>
+                    </article>
+                    <article class="programme-step">
+                        <div class="programme-time">23h30</div>
+                        <div class="programme-body">
+                            <h3>Bal & surprises</h3>
+                            <p>En piste jusqu’au bout de la nuit : préparez vos baskets, votre groove et votre sourire.</p>
+                        </div>
+                    </article>
+                    <article class="programme-step">
+                        <div class="programme-time">11h00</div>
+                        <div class="programme-body">
+                            <h3>Brunch du dimanche</h3>
+                            <p>On se retrouve pour prolonger la fête avec les plus matinaux (ou les plus courageux !).</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Ambiance</p>
+                    <h2 class="section-title">Un week-end à votre image</h2>
+                    <p class="section-intro">Nous avons imaginé chaque détail pour que vous soyez sereins : pensées pour les enfants, options d’hébergement, playlists participatives, temps de repos et temps endiablés.</p>
+                </div>
+                <div class="experience-grid">
+                    <article class="experience-card">
+                        <h3>Dress code</h3>
+                        <p>Couleurs douces, matières fluides et touches fleuries seront parfaites. Lâchez-vous sur les accessoires !</p>
+                    </article>
+                    <article class="experience-card">
+                        <h3>Playlist collaborative</h3>
+                        <p>Partagez vos sons préférés : nous créerons la bande-son idéale pour vous voir danser.</p>
+                    </article>
+                    <article class="experience-card">
+                        <h3>Moments pour respirer</h3>
+                        <p>Des salons cozy, un bar à thés glacés et des espaces détente pour savourer chaque instant.</p>
+                    </article>
+                    <article class="experience-card">
+                        <h3>Petit mot d’amour</h3>
+                        <p>Une “Love Box” sera à votre disposition pour glisser un message, un souvenir ou un clin d’œil.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="location-section">
+            <div class="container location-grid">
+                <div class="location-card location-card--primary">
+                    <p class="location-kicker">Lieu de réception</p>
+                    <h2>La Grange de la Forge</h2>
+                    <p class="location-address">9 Rue de l'Église<br>27420 Mouflaines</p>
+                    <p>Un domaine bucolique à l’esprit bohème, baigné de lumière et entouré de nature. Découvrez tous les détails pratiques sur la page Accès.</p>
+                    <a class="btn btn-subtle" href="acces.html">Voir comment nous rejoindre</a>
+                </div>
+                <div class="location-card location-card--secondary">
+                    <h3>Se loger & profiter</h3>
+                    <ul class="location-list">
+                        <li>Chambres sur place en nombre limité – réservation prochainement.</li>
+                        <li>Sélection d’hôtels soigneusement choisis à proximité.</li>
+                        <li>Navettes nocturnes en réflexion selon vos réponses.</li>
+                    </ul>
+                    <a class="link-arrow" href="hebergement.html">Explorer les possibilités</a>
+                </div>
+                <div class="location-card location-card--tertiary">
+                    <h3>Enfants bienvenus</h3>
+                    <p>Une équipe dédiée et des activités sur-mesure pour que les plus petits s’émerveillent eux aussi.</p>
+                    <a class="link-arrow" href="enfants.html">Préparer leur venue</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Les essentiels</p>
+                    <h2 class="section-title">Questions que vous nous posez souvent</h2>
+                </div>
+                <div class="faq-grid">
+                    <article class="faq-item">
+                        <h3>Quels sont les horaires de navette&nbsp;?</h3>
+                        <p>Nous confirmerons les options de transport quelques semaines avant le mariage en fonction de vos réponses sur le formulaire.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Je dois signaler une allergie alimentaire.</h3>
+                        <p>Un espace dédié sera prévu dans le formulaire RSVP pour préciser toute allergie ou préférence. Notre traiteur saura s’adapter.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Puis-je venir avec mes enfants&nbsp;?</h3>
+                        <p>Oui, ils sont les bienvenus ! Nous prévoyons des animations et un coin rien que pour eux.</p>
+                    </article>
+                    <article class="faq-item">
+                        <h3>Un cadeau ou une cagnotte&nbsp;?</h3>
+                        <p>Votre présence est notre plus beau cadeau. Une cagnotte voyage sera néanmoins proposée pour ceux qui souhaitent nous gâter.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="rsvp-section" id="rsvp">
+            <div class="container rsvp-inner">
+                <div class="rsvp-content">
+                    <p class="section-kicker">RSVP</p>
+                    <h2 class="section-title">Répondez avant le 1er mai 2026</h2>
+                    <p class="section-intro">Votre réponse nous aidera à préparer un week-end qui vous ressemble. Merci de prendre quelques instants pour nous confirmer votre présence.</p>
+                    <a class="btn btn-primary btn-large" href="#" id="rsvpBtn">Ouvrir le formulaire RSVP</a>
+                    <p class="rsvp-note">Le formulaire en ligne arrive très vite. Laissez-nous un petit message si vous avez la moindre question.</p>
+                </div>
+                <div class="rsvp-card">
+                    <h3>Contact</h3>
+                    <p>Matthias · <a href="mailto:matthias@email.com">matthias@email.com</a></p>
+                    <p>Anaïs · <a href="mailto:anais@email.com">anais@email.com</a></p>
+                    <p class="rsvp-card__note">Besoin d’aide pour vous loger ou organiser votre trajet ? Nous sommes là.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Anaïs & Matthias — Avec tout notre amour</p>
+            <div class="footer-links">
+                <a href="#top">Revenir en haut</a>
+                <a href="acces.html">Plan d’accès</a>
+                <a href="hebergement.html">Dormir sur place</a>
+            </div>
         </div>
     </footer>
 

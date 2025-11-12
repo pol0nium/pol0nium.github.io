@@ -8,99 +8,128 @@
     <title>Hébergement - Mariage Anaïs & Matthias</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">A & M</div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Accueil</a></li>
-                <li><a href="hebergement.html" class="nav-link active">Hébergement</a></li>
-                <li><a href="enfants.html" class="nav-link">Enfants</a></li>
-                <li><a href="acces.html" class="nav-link">Accès</a></li>
-            </ul>
-        </div>
-    </nav>
+<body class="theme-pearl">
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a class="nav-brand" href="index.html" aria-label="Retour à l'accueil">Anaïs & Matthias</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li><a href="hebergement.html" class="nav-link active">Hébergement</a></li>
+                    <li><a href="enfants.html" class="nav-link">Enfants</a></li>
+                    <li><a href="acces.html" class="nav-link">Accès</a></li>
+                    <li><a href="index.html#rsvp" class="nav-link nav-link--accent">RSVP</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="page-title">Hébergement</h1>
-            <div class="decorative-line"></div>
-        </div>
-    </section>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <p class="section-kicker">Hébergement</p>
+                <h1>Se reposer tout près de nous</h1>
+                <p class="section-intro">Pour que la fête dure le plus longtemps possible, nous avons imaginé plusieurs solutions de couchage, sur place ou à proximité. Laissez-vous guider.</p>
+            </div>
+        </section>
 
-    <!-- Venue Rooms Section -->
-    <section class="content-section">
-        <div class="container">
-            <h2 class="section-title">Chambres sur place</h2>
-            <p class="intro-text">La Grange de la Forge dispose de chambres et de lits superposés pour vous accueillir sur place.</p>
-            
-            <div class="accommodation-grid">
-                <div class="accommodation-card">
-                    <h3>Chambres disponibles</h3>
-                    <p>Nombre de chambres : <strong>À compléter</strong></p>
-                    <p>La liste complète des chambres disponibles sera affichée ici.</p>
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Sur place</p>
+                    <h2 class="section-title">Dormir directement à la Grange</h2>
+                    <p class="section-intro">La Grange de la Forge met à notre disposition quelques chambres douillettes et un dortoir convivial. Parfait pour ceux qui souhaitent rester au cœur de la fête.</p>
                 </div>
-                <div class="accommodation-card">
-                    <h3>Lits superposés</h3>
-                    <p>Nombre de lits : <strong>À compléter</strong></p>
-                    <p>Des lits superposés sont également disponibles pour les invités.</p>
+                <div class="card-grid">
+                    <article class="info-card">
+                        <h3>Chambres cosy</h3>
+                        <p><strong>Capacité :</strong> À confirmer (double + familiale).</p>
+                        <p>Chaque chambre possède sa propre atmosphère : linge frais, touches fleuries, ambiance feutrée. Parfait pour récupérer en douceur.</p>
+                        <p class="subtle-note">Liste détaillée des chambres à venir dans votre convocation.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Espace dortoir</h3>
+                        <p><strong>Lits superposés :</strong> À préciser.</p>
+                        <p>Une solution idéale pour les amis qui veulent prolonger la nuit sans reprendre la route. Prévoir vos draps de bain.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Réservation</h3>
+                        <p>Les couchages seront attribués en priorité aux familles avec enfants et aux personnes venant de loin.</p>
+                        <p class="subtle-note">Merci d’indiquer votre souhait d’hébergement dans le formulaire RSVP.</p>
+                        <a class="btn btn-primary" href="#" id="bookingBtn">Demander une place</a>
+                        <p class="subtle-note">Le formulaire dédié sera mis en ligne prochainement.</p>
+                    </article>
                 </div>
             </div>
+        </section>
 
-            <div class="booking-section">
-                <h3>Réservation</h3>
-                <p>Pour réserver une chambre ou un lit superposé, merci de remplir le formulaire ci-dessous :</p>
-                <a href="#" class="btn-primary" id="bookingBtn"><span>Réserver un hébergement</span></a>
-                <p class="form-note">Lien vers le formulaire de réservation à venir</p>
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Autour du domaine</p>
+                    <h2 class="section-title">Nos adresses préférées</h2>
+                    <p class="section-intro">Pour compléter les couchages sur place, nous avons sélectionné quelques hôtels et maisons d’hôtes à moins de 20 minutes de la Grange.</p>
+                </div>
+                <div class="card-grid">
+                    <article class="info-card">
+                        <h3>Hôtel Belle Campagne</h3>
+                        <p><strong>Distance :</strong> ~12 km</p>
+                        <p>Charme normand, chambres lumineuses et petit déjeuner généreux.</p>
+                        <p class="subtle-note">Adresse et téléphone à venir.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Maison d’hôtes Les Tilleuls</h3>
+                        <p><strong>Distance :</strong> ~9 km</p>
+                        <p>Une ambiance chaleureuse, idéale pour les familles. Jardin et piscine en été.</p>
+                        <p class="subtle-note">Coordonnées à compléter.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Gîte de la Forêt</h3>
+                        <p><strong>Distance :</strong> ~15 km</p>
+                        <p>Un gîte à louer en entier, parfait pour loger un petit groupe d’amis.</p>
+                        <p class="subtle-note">Capacité et tarifs à préciser.</p>
+                    </article>
+                </div>
+                <p class="subtle-note" style="margin-top: var(--space-md); text-align: center;">D’autres adresses seront ajoutées prochainement. N’hésitez pas à nous écrire si vous avez besoin d’aide pour réserver.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Hotels Section -->
-    <section class="content-section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Hôtels à proximité</h2>
-            <p class="intro-text">Voici une sélection d'hôtels situés près de La Grange de la Forge.</p>
-            
-            <div class="hotels-list">
-                <div class="hotel-card">
-                    <h3>Hôtel 1</h3>
-                    <p class="hotel-address">Adresse à compléter</p>
-                    <p class="hotel-distance">Distance : ~XX km</p>
-                    <p class="hotel-phone">Tél : À compléter</p>
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Navettes & covoiturage</p>
+                    <h2 class="section-title">Repartir en toute sérénité</h2>
+                    <p class="section-intro">Selon vos réponses, nous organiserons des navettes de nuit ou des options de covoiturage afin que chacun puisse rejoindre son logement en toute sécurité.</p>
                 </div>
-                
-                <div class="hotel-card">
-                    <h3>Hôtel 2</h3>
-                    <p class="hotel-address">Adresse à compléter</p>
-                    <p class="hotel-distance">Distance : ~XX km</p>
-                    <p class="hotel-phone">Tél : À compléter</p>
-                </div>
-                
-                <div class="hotel-card">
-                    <h3>Hôtel 3</h3>
-                    <p class="hotel-address">Adresse à compléter</p>
-                    <p class="hotel-distance">Distance : ~XX km</p>
-                    <p class="hotel-phone">Tél : À compléter</p>
+                <div class="info-card">
+                    <h3>Comment ça marche ?</h3>
+                    <ul class="location-list">
+                        <li>Indiquez vos besoins de transport dans le formulaire RSVP.</li>
+                        <li>Regroupez-vous par secteurs pour favoriser le covoiturage.</li>
+                        <li>Une navette retour est envisageable vers les hôtels les plus proches.</li>
+                    </ul>
+                    <p class="subtle-note">Nous vous confirmerons les modalités finales au printemps 2026.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mariage Anaïs & Matthias</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Anaïs & Matthias — Merci d’être à nos côtés</p>
+            <div class="footer-links">
+                <a href="index.html">Accueil</a>
+                <a href="acces.html">Accès</a>
+                <a href="enfants.html">Enfants</a>
+            </div>
         </div>
     </footer>
 

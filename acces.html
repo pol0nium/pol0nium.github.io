@@ -8,148 +8,160 @@
     <title>Accès - Mariage Anaïs & Matthias</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">A & M</div>
-            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Accueil</a></li>
-                <li><a href="hebergement.html" class="nav-link">Hébergement</a></li>
-                <li><a href="enfants.html" class="nav-link">Enfants</a></li>
-                <li><a href="acces.html" class="nav-link active">Accès</a></li>
-            </ul>
-        </div>
-    </nav>
+<body class="theme-pearl">
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="container nav-container">
+                <a class="nav-brand" href="index.html" aria-label="Retour à l'accueil">Anaïs & Matthias</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link">Accueil</a></li>
+                    <li><a href="hebergement.html" class="nav-link">Hébergement</a></li>
+                    <li><a href="enfants.html" class="nav-link">Enfants</a></li>
+                    <li><a href="acces.html" class="nav-link active">Accès</a></li>
+                    <li><a href="index.html#rsvp" class="nav-link nav-link--accent">RSVP</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="page-title">Comment nous rejoindre</h1>
-            <div class="decorative-line"></div>
-        </div>
-    </section>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <p class="section-kicker">Vos itinéraires</p>
+                <h1>Nous rejoindre en toute simplicité</h1>
+                <p class="section-intro">Tous les chemins mènent à la fête. Que vous veniez pour la cérémonie civile ou la réception champêtre, on vous guide pas à pas.</p>
+            </div>
+        </section>
 
-    <!-- Locations Section -->
-    <section class="content-section">
-        <div class="container">
-            <h2 class="section-title">Lieux</h2>
-            
-            <div class="location-info">
-                <div class="location-detail-card">
-                    <h3>Mariage civil</h3>
-                    <p class="location-name">Mairie de Vanves</p>
-                    <p class="location-address">13 Rue Jean Bleuzen<br>92170 Vanves</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=Mairie+de+Vanves" target="_blank" rel="noopener noreferrer" class="btn-secondary">Voir sur Google Maps</a>
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Les lieux clés</p>
+                    <h2 class="section-title">Deux adresses pour une même célébration</h2>
+                    <p class="section-intro">Retrouvez ci-dessous les informations essentielles et les liens directs vers Google Maps.</p>
                 </div>
-
-                <div class="location-detail-card highlight">
-                    <h3>Lieu de réception</h3>
-                    <p class="location-name">La Grange de la Forge</p>
-                    <p class="location-address">9 Rue de l'Église<br>27420 Mouflaines</p>
-                    <a href="https://www.google.com/maps/search/?api=1&query=9+Rue+de+l'Église+27420+Mouflaines" target="_blank" rel="noopener noreferrer" class="btn-secondary">Voir sur Google Maps</a>
+                <div class="location-grid">
+                    <article class="location-card location-card--secondary">
+                        <h3>Mairie de Vanves</h3>
+                        <p class="location-address">13 Rue Jean Bleuzen<br>92170 Vanves</p>
+                        <p>Nous vous accueillons à partir de 10h45 pour la cérémonie civile.</p>
+                        <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Mairie+de+Vanves" target="_blank" rel="noopener noreferrer">Itinéraire Google Maps</a>
+                    </article>
+                    <article class="location-card location-card--primary">
+                        <p class="location-kicker">Réception</p>
+                        <h2>La Grange de la Forge</h2>
+                        <p class="location-address">9 Rue de l'Église<br>27420 Mouflaines</p>
+                        <p>Vin d’honneur, dîner et soirée dansante auront lieu dans ce havre de verdure à partir de 16h.</p>
+                        <a class="btn btn-subtle" href="https://www.google.com/maps/search/?api=1&query=9+Rue+de+l'Église+27420+Mouflaines" target="_blank" rel="noopener noreferrer">Voir l’itinéraire</a>
+                    </article>
+                    <article class="location-card location-card--tertiary">
+                        <h3>Temps de trajet</h3>
+                        <ul class="location-list">
+                            <li>Vanves → Mouflaines : ~1h30 en voiture</li>
+                            <li>Rouen → Mouflaines : ~45 min</li>
+                            <li>Paris → Vanves : accessible en métro (ligne 13) + marche</li>
+                        </ul>
+                        <p class="subtle-note">Pensez au covoiturage, nous aiderons à coordonner les trajets.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="container">
-            <h2 class="section-title">Plans d'accès</h2>
-            
-            <div style="margin-bottom: 3rem;">
-                <h3 style="text-align: center; color: var(--color-rose); margin-bottom: 1.5rem; font-size: 1.8rem;">Mairie de Vanves</h3>
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5253.8537312995495!2d2.2839725906940944!3d48.82145682938327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67063929833e3%3A0xc2314c4725d00904!2sMairie%20de%20Vanves!5e0!3m2!1sfr!2sfr!4v1762952703365!5m2!1sfr!2sfr"
-                        width="100%" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Carte Mairie de Vanves">
-                    </iframe>
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Repères</p>
+                    <h2 class="section-title">Plans interactifs</h2>
+                </div>
+                <div class="info-card" style="padding: 0;">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-slate); margin-bottom: 0.8rem;">Mairie de Vanves</h3>
+                        <p class="subtle-note">Parking conseillé : parking Indigo, Place de la République.</p>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5253.8537312995495!2d2.2839725906940944!3d48.82145682938327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67063929833e3%3A0xc2314c4725d00904!2sMairie%20de%20Vanves!5e0!3m2!1sfr!2sfr!4v1762952703365!5m2!1sfr!2sfr"
+                            width="100%"
+                            height="420"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Carte Mairie de Vanves">
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="info-card" style="padding: 0; margin-top: var(--space-lg);">
+                    <div style="padding: 2rem;">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--color-slate); margin-bottom: 0.8rem;">La Grange de la Forge</h3>
+                        <p class="subtle-note">Le parking du domaine peut accueillir vos véhicules. Merci de privilégier le covoiturage.</p>
+                    </div>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.6407949357363!2d1.5524529766156745!3d49.24529917340065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6d0efc0fa846d%3A0x75dace3f916a1040!2sLa%20Grange%20de%20la%20Forge!5e0!3m2!1sfr!2sfr!4v1762952667596!5m2!1sfr!2sfr"
+                            width="100%"
+                            height="420"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Carte La Grange de la Forge">
+                        </iframe>
+                    </div>
                 </div>
             </div>
-            
-            <div>
-                <h3 style="text-align: center; color: var(--color-rose); margin-bottom: 1.5rem; font-size: 1.8rem;">La Grange de la Forge</h3>
-                <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.6407949357363!2d1.5524529766156745!3d49.24529917340065!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6d0efc0fa846d%3A0x75dace3f916a1040!2sLa%20Grange%20de%20la%20Forge!5e0!3m2!1sfr!2sfr!4v1762952667596!5m2!1sfr!2sfr"
-                        width="100%" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Carte La Grange de la Forge">
-                    </iframe>
+        </section>
+
+        <section class="page-section">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-kicker">Conseils de voyage</p>
+                    <h2 class="section-title">Venir en voiture, en train ou en covoiturage</h2>
+                </div>
+                <div class="card-grid">
+                    <article class="info-card">
+                        <h3>En voiture</h3>
+                        <ul class="location-list">
+                            <li>Depuis Paris : A13 direction Rouen, sortie en direction des Andelys.</li>
+                            <li>Prévoir 1h30 selon le trafic.</li>
+                            <li>Bornes de recharge les plus proches : Les Andelys (15 min).</li>
+                        </ul>
+                    </article>
+                    <article class="info-card">
+                        <h3>En train</h3>
+                        <ul class="location-list">
+                            <li>Gare de Vernon-Giverny (50 min de Paris St-Lazare).</li>
+                            <li>Puis voiture/covoiturage ~30 min jusqu’au domaine.</li>
+                            <li>Option navette selon le nombre de demandes.</li>
+                        </ul>
+                    </article>
+                    <article class="info-card">
+                        <h3>Covoiturage & navettes</h3>
+                        <p>Nous mettrons en relation les invités qui proposent une place en voiture.</p>
+                        <p class="subtle-note">Indiquez vos besoins dans le formulaire RSVP : nous organiserons tout ça ensemble.</p>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Directions Section -->
-    <section class="content-section alt-bg">
-        <div class="container">
-            <h2 class="section-title">Itinéraire</h2>
-            
-            <div class="directions-grid">
-                <div class="direction-card">
-                    <h3>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                        En voiture
-                    </h3>
-                    <p><strong>Depuis Paris :</strong></p>
-                    <ul>
-                        <li>Prendre l'A13 direction Rouen</li>
-                        <li>Sortie à définir</li>
-                        <li>Suivre les indications vers Mouflaines</li>
-                        <li>Durée : environ 1h30</li>
-                    </ul>
-                    <p class="parking-info"><strong>Parking :</strong> Stationnement disponible sur place</p>
-                </div>
-
-                <div class="direction-card">
-                    <h3>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="8" width="18" height="12" rx="2" ry="2"></rect>
-                            <line x1="3" y1="12" x2="21" y2="12"></line>
-                            <line x1="7" y1="8" x2="7" y2="4"></line>
-                            <line x1="17" y1="8" x2="17" y2="4"></line>
-                        </svg>
-                        En train
-                    </h3>
-                    <p><strong>Gare la plus proche :</strong></p>
-                    <ul>
-                        <li>Gare de [Nom de la gare]</li>
-                        <li>Distance : XX km</li>
-                        <li>Possibilité de covoiturage depuis la gare</li>
-                    </ul>
-                    <p class="info-text">Contactez-nous pour organiser un transport depuis la gare</p>
-                </div>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; 2026 Anaïs & Matthias — Au plaisir de vous voir arriver</p>
+            <div class="footer-links">
+                <a href="index.html">Accueil</a>
+                <a href="hebergement.html">Hébergement</a>
+                <a href="enfants.html">Enfants</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mariage Anaïs & Matthias</p>
         </div>
     </footer>
 
