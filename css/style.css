@@ -78,12 +78,14 @@ a {
 /* --------------------------------------------------------------------- */
 
 .container {
-    width: min(1120px, 92vw);
+    max-width: 1120px;
     margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
 section {
-    padding: var(--space-xl) 0;
+    padding: var(--space-lg) 0;
 }
 
 .section-header {
@@ -192,7 +194,7 @@ section {
 }
 
 .nav-link--accent {
-    border: 1px solid rgba(176, 138, 152, 0.45);
+    font-weight: 600;
 }
 
 .nav-toggle {
@@ -305,10 +307,13 @@ section {
 /* Hero                                                                 */
 /* --------------------------------------------------------------------- */
 
+.hero,
+.page-hero {
+    padding-bottom: var(--space-lg);
+}
+
 .hero {
     position: relative;
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-xl);
 }
 
 .hero-pattern {
@@ -326,6 +331,7 @@ section {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     gap: var(--space-lg);
+    overflow: hidden;
 }
 
 .hero-content {
@@ -404,7 +410,7 @@ section {
     --d: 12s;
     display: grid;
     width: clamp(280px, 45vw, 380px);
-    margin: var(--space-lg) auto;
+    margin: 0 auto;
     position: relative;
 }
 
@@ -740,12 +746,6 @@ section {
     background: var(--color-pearl);
 }
 
-.location-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: var(--space-md);
-}
-
 .location-card {
     border-radius: var(--radius-lg);
     padding: 2.3rem;
@@ -1001,8 +1001,6 @@ section {
 /* --------------------------------------------------------------------- */
 
 .page-hero {
-    margin-top: 112px;
-    padding: var(--space-xl) 0;
     background: linear-gradient(135deg, rgba(224, 183, 196, 0.2), rgba(59, 95, 86, 0.12));
     text-align: center;
 }
@@ -1017,7 +1015,8 @@ section {
     padding: var(--space-xl) 0;
 }
 
-.card-grid {
+.card-grid,
+.location-grid {
     display: grid;
     gap: var(--space-md);
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1070,6 +1069,11 @@ section {
 /* --------------------------------------------------------------------- */
 
 @media (max-width: 1024px) {
+    .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     .hero-inner {
         grid-template-columns: 1fr;
         gap: var(--space-md);
@@ -1079,6 +1083,7 @@ section {
         order: -1;
         width: clamp(200px, 50vw, 280px);
         margin: 0 auto var(--space-md) auto;
+        max-width: 100%;
     }
 
     .hero-title {
@@ -1110,8 +1115,8 @@ section {
         right: 0;
         background: rgba(251, 249, 245, 0.98);
         flex-direction: column;
-        gap: 0;
-        padding: 1.4rem 0;
+        gap: 0.5rem;
+        padding: 1.8rem 0;
         transform: translateY(-100%);
         transition: transform 0.35s ease;
         box-shadow: 0 18px 40px -32px rgba(47, 62, 70, 0.6);
@@ -1126,12 +1131,16 @@ section {
 
     .nav-link {
         width: 100%;
-        padding: 0.9rem 1.4rem;
+        padding: 0.75rem 1.4rem;
         text-align: center;
     }
 
     .hero-countdown {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .scroll-indicator {
+        display: none;
     }
 }
 
@@ -1143,9 +1152,14 @@ section {
         --space-xl: 3.5rem;
     }
 
-    .hero {
-        padding-top: calc(82px + var(--space-sm));
-        padding-bottom: var(--space-lg);
+    .container {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .hero,
+    .page-hero {
+        padding-bottom: var(--space-md);
     }
 
     .hero-inner {
@@ -1153,18 +1167,25 @@ section {
     }
 
     .hero-gallery {
-        width: clamp(180px, 65vw, 240px);
-        margin: 0 auto var(--space-sm) auto;
+        width: clamp(160px, 60vw, 220px);
+        margin: 0 auto var(--space-md) auto;
+        max-width: calc(100% - 2rem);
     }
 
     .hero-kicker {
         font-size: 0.7rem;
         letter-spacing: 0.18rem;
+        text-align: center;
     }
 
     .hero-title {
         font-size: clamp(2rem, 7vw, 2.8rem);
         margin-bottom: 0.8rem;
+        text-align: center;
+    }
+
+    .hero-title .title-break {
+        display: block;
     }
 
     .hero-subtitle {
