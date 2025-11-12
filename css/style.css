@@ -1,0 +1,804 @@
+/* ===========================
+   Reset & Base Styles
+   =========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --color-ivory: #FEFDFB;
+    --color-pink: #F4D9D0;
+    --color-gold: #D4AF37;
+    --color-beige: #E8DED2;
+    --color-dark-beige: #D4C5B9;
+    --color-text: #4A4A4A;
+    --color-text-light: #6B6B6B;
+    
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 6rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background-color: var(--color-ivory);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===========================
+   Typography
+   =========================== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text);
+}
+
+/* ===========================
+   Navigation
+   =========================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(254, 253, 251, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-gold);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: var(--spacing-md);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-gold);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 2px;
+    background-color: var(--color-text);
+    margin: 3px 0;
+    transition: all 0.3s ease;
+}
+
+/* ===========================
+   Carousel Section
+   =========================== */
+.carousel-section {
+    margin-top: 70px;
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+    color: var(--color-gold);
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background-color: var(--color-gold);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: 20px;
+}
+
+.carousel-btn.next {
+    right: 20px;
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+/* ===========================
+   Container & Layout
+   =========================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+section {
+    padding: var(--spacing-lg) 0;
+}
+
+/* ===========================
+   Title Section
+   =========================== */
+.title-section {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-beige) 100%);
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.wedding-date {
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    font-weight: 500;
+    margin-bottom: var(--spacing-md);
+}
+
+.decorative-line {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    margin: 0 auto;
+}
+
+/* ===========================
+   Section Title
+   =========================== */
+.section-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text);
+}
+
+/* ===========================
+   Schedule Section
+   =========================== */
+.schedule-section {
+    background-color: var(--color-ivory);
+}
+
+.schedule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.schedule-card {
+    background-color: white;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.schedule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-pink);
+}
+
+.schedule-time {
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.schedule-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.schedule-content p {
+    color: var(--color-text-light);
+    font-size: 1rem;
+}
+
+/* ===========================
+   Location Section
+   =========================== */
+.location-section {
+    background-color: var(--color-beige);
+    text-align: center;
+}
+
+.location-card {
+    background-color: white;
+    padding: var(--spacing-lg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.location-card h3 {
+    font-size: 2rem;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.location-address {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ===========================
+   RSVP Section
+   =========================== */
+.rsvp-section {
+    background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-pink) 100%);
+    text-align: center;
+}
+
+.rsvp-text {
+    font-size: 1.2rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rsvp-note {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+}
+
+/* ===========================
+   Buttons
+   =========================== */
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-gold);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background-color: #C09A2A;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-gold);
+    color: white;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+.footer {
+    background-color: var(--color-text);
+    color: var(--color-ivory);
+    text-align: center;
+    padding: var(--spacing-md) 0;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* ===========================
+   Page Header (for sub-pages)
+   =========================== */
+.page-header {
+    margin-top: 70px;
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(180deg, var(--color-beige) 0%, var(--color-ivory) 100%);
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+/* ===========================
+   Content Section
+   =========================== */
+.content-section {
+    padding: var(--spacing-lg) 0;
+}
+
+.content-section.alt-bg {
+    background-color: var(--color-beige);
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===========================
+   Accommodation Styles
+   =========================== */
+.accommodation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.accommodation-card {
+    background-color: white;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.accommodation-card h3 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.booking-section {
+    background-color: white;
+    padding: var(--spacing-lg);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+.booking-section h3 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-note {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+}
+
+/* ===========================
+   Hotels List
+   =========================== */
+.hotels-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.hotel-card {
+    background-color: white;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.hotel-card h3 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hotel-address,
+.hotel-distance,
+.hotel-phone {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ===========================
+   Childcare Styles
+   =========================== */
+.childcare-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.info-card {
+    background-color: white;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.info-card h3 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.activities-list {
+    list-style-position: inside;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-sm);
+}
+
+.activities-list li {
+    padding: 0.3rem 0;
+}
+
+.note-section {
+    background-color: var(--color-beige);
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    text-align: center;
+    margin-top: var(--spacing-md);
+}
+
+/* ===========================
+   Access Page Styles
+   =========================== */
+.location-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.location-detail-card {
+    background-color: white;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+}
+
+.location-detail-card.highlight {
+    border: 2px solid var(--color-gold);
+}
+
+.location-detail-card h3 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.location-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.location-detail-card .btn-secondary {
+    margin-top: var(--spacing-sm);
+}
+
+/* ===========================
+   Map Section
+   =========================== */
+.map-section {
+    background-color: var(--color-beige);
+}
+
+.map-container {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.map-note {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+}
+
+/* ===========================
+   Directions Grid
+   =========================== */
+.directions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.direction-card {
+    background-color: white;
+    padding: var(--spacing-md);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.direction-card h3 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.direction-card h3 svg {
+    color: var(--color-gold);
+}
+
+.direction-card ul {
+    margin: var(--spacing-sm) 0;
+    padding-left: var(--spacing-md);
+    color: var(--color-text-light);
+}
+
+.direction-card ul li {
+    margin: 0.5rem 0;
+}
+
+.parking-info,
+.info-text {
+    color: var(--color-text-light);
+    font-style: italic;
+    margin-top: var(--spacing-sm);
+}
+
+/* ===========================
+   Responsive Design
+   =========================== */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background-color: var(--color-ivory);
+        width: 100%;
+        text-align: center;
+        transition: left 0.3s ease;
+        box-shadow: var(--shadow-md);
+        padding: var(--spacing-md) 0;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    .carousel-section {
+        height: 400px;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .wedding-date {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .page-title {
+        font-size: 2.2rem;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-btn.prev {
+        left: 10px;
+    }
+    
+    .carousel-btn.next {
+        right: 10px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    :root {
+        --spacing-sm: 0.75rem;
+        --spacing-md: 1.5rem;
+        --spacing-lg: 3rem;
+        --spacing-xl: 4rem;
+    }
+    
+    .carousel-section {
+        height: 300px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .wedding-date {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .page-title {
+        font-size: 1.8rem;
+    }
+    
+    .schedule-grid,
+    .accommodation-grid,
+    .hotels-list,
+    .location-info,
+    .directions-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.875rem 2rem;
+        font-size: 0.95rem;
+    }
+}
+

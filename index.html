@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Mariage d'Anaïs et Matthias - 4 juillet 2026">
+    <title>Mariage Anaïs & Matthias - 4 juillet 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">A & M</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Accueil</a></li>
+                <li><a href="hebergement.html" class="nav-link">Hébergement</a></li>
+                <li><a href="enfants.html" class="nav-link">Enfants</a></li>
+                <li><a href="acces.html" class="nav-link">Accès</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Carousel Section -->
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="carousel-slides">
+                <div class="carousel-slide active">
+                    <img src="images/placeholder1.svg" alt="Photo 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/placeholder2.svg" alt="Photo 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/placeholder3.svg" alt="Photo 3">
+                </div>
+                <div class="carousel-slide">
+                    <img src="images/placeholder4.svg" alt="Photo 4">
+                </div>
+            </div>
+            <button class="carousel-btn prev" id="prevBtn" aria-label="Image précédente">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <button class="carousel-btn next" id="nextBtn" aria-label="Image suivante">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- Title Section -->
+    <section class="title-section">
+        <div class="container">
+            <h1 class="main-title">Anaïs & Matthias</h1>
+            <p class="wedding-date">4 juillet 2026</p>
+            <div class="decorative-line"></div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section">
+        <div class="container">
+            <h2 class="section-title">Programme de la journée</h2>
+            <div class="schedule-grid">
+                <div class="schedule-card">
+                    <div class="schedule-time">11h00</div>
+                    <div class="schedule-content">
+                        <h3>Mariage civil</h3>
+                        <p>Mairie de Vanves</p>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-time">16h00</div>
+                    <div class="schedule-content">
+                        <h3>Vin d'honneur</h3>
+                        <p>La Grange de la Forge</p>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-time">19h00</div>
+                    <div class="schedule-content">
+                        <h3>Dîner</h3>
+                        <p>La Grange de la Forge</p>
+                    </div>
+                </div>
+                <div class="schedule-card">
+                    <div class="schedule-time">23h30</div>
+                    <div class="schedule-content">
+                        <h3>Lancement du bal</h3>
+                        <p>La Grange de la Forge</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container">
+            <h2 class="section-title">Lieu de réception</h2>
+            <div class="location-card">
+                <h3>La Grange de la Forge</h3>
+                <p class="location-address">9 Rue de l'Église<br>27420 Mouflaines</p>
+                <a href="acces.html" class="btn-secondary">Comment s'y rendre</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+        <div class="container">
+            <h2 class="section-title">Répondez avant le 1er mai 2026</h2>
+            <p class="rsvp-text">Nous serions ravis de célébrer ce jour spécial avec vous !</p>
+            <a href="#" class="btn-primary" id="rsvpBtn">Confirmer ma présence</a>
+            <p class="rsvp-note">Lien vers le formulaire à venir</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Mariage Anaïs & Matthias</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
+
