@@ -8,18 +8,22 @@
 }
 
 :root {
-    /* Color Palette */
-    --color-ivory: #FEFDFB;
-    --color-pink: #F4D9D0;
-    --color-gold: #D4AF37;
-    --color-beige: #E8DED2;
-    --color-dark-beige: #D4C5B9;
-    --color-text: #4A4A4A;
-    --color-text-light: #6B6B6B;
+    /* Elegant Color Palette */
+    --color-cream: #FFF8F0;
+    --color-blush: #FFE4E1;
+    --color-rose: #F4C2C2;
+    --color-dusty-rose: #D4A5A5;
+    --color-mauve: #C9ADA7;
+    --color-sage: #9A8C98;
+    --color-charcoal: #4A4E69;
+    --color-gold: #C9A66B;
+    --color-champagne: #F7E7CE;
+    --color-white: #FFFFFF;
     
     /* Typography */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Montserrat', sans-serif;
+    --font-script: 'Dancing Script', cursive;
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -29,9 +33,9 @@
     --spacing-xl: 6rem;
     
     /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-soft: 0 10px 40px rgba(74, 78, 105, 0.08);
+    --shadow-medium: 0 15px 50px rgba(74, 78, 105, 0.12);
+    --shadow-strong: 0 20px 60px rgba(74, 78, 105, 0.15);
 }
 
 html {
@@ -40,10 +44,25 @@ html {
 
 body {
     font-family: var(--font-body);
-    color: var(--color-text);
-    background-color: var(--color-ivory);
-    line-height: 1.6;
+    color: var(--color-charcoal);
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-blush) 100%);
+    line-height: 1.8;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(244, 194, 194, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(201, 166, 107, 0.08) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* ===========================
@@ -53,7 +72,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     font-weight: 600;
     line-height: 1.3;
-    color: var(--color-text);
+    color: var(--color-charcoal);
 }
 
 /* ===========================
@@ -64,15 +83,21 @@ h1, h2, h3, h4, h5, h6 {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(254, 253, 251, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 1.2rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    padding: 0.8rem 0;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
     display: flex;
@@ -81,10 +106,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-gold);
+    font-family: var(--font-script);
+    font-size: 2rem;
+    font-weight: 400;
+    background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .nav-menu {
@@ -95,16 +123,36 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-link {
     text-decoration: none;
-    color: var(--color-text);
+    color: var(--color-charcoal);
     font-weight: 500;
     font-size: 0.95rem;
-    transition: color 0.3s ease;
-    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-rose), var(--color-gold));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 70%;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--color-gold);
+    color: var(--color-rose);
 }
 
 .nav-toggle {
@@ -117,20 +165,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-toggle span {
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-text);
+    width: 28px;
+    height: 2.5px;
+    background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
     margin: 3px 0;
     transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
 /* ===========================
-   Carousel Section
+   Carousel Section - Enhanced
    =========================== */
 .carousel-section {
-    margin-top: 70px;
+    margin-top: 80px;
     position: relative;
-    height: 600px;
+    height: 85vh;
+    min-height: 600px;
     overflow: hidden;
 }
 
@@ -138,6 +188,18 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.carousel-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--color-cream), transparent);
+    pointer-events: none;
+    z-index: 2;
 }
 
 .carousel-slides {
@@ -153,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .carousel-slide.active {
@@ -164,48 +226,50 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.95) contrast(1.05);
 }
 
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     border: none;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    box-shadow: var(--shadow-md);
-    color: var(--color-gold);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-soft);
+    color: var(--color-rose);
     z-index: 10;
 }
 
 .carousel-btn:hover {
-    background-color: var(--color-gold);
+    background: var(--color-rose);
     color: white;
     transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--shadow-medium);
 }
 
 .carousel-btn.prev {
-    left: 20px;
+    left: 30px;
 }
 
 .carousel-btn.next {
-    right: 20px;
+    right: 30px;
 }
 
 .carousel-dots {
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 12px;
+    gap: 15px;
     z-index: 10;
 }
 
@@ -213,75 +277,153 @@ h1, h2, h3, h4, h5, h6 {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.4);
     border: 2px solid white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.carousel-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: all 0.4s ease;
+}
+
+.carousel-dot:hover::after,
+.carousel-dot.active::after {
+    border-color: white;
 }
 
 .carousel-dot.active {
-    background-color: var(--color-gold);
-    border-color: var(--color-gold);
+    background-color: var(--color-rose);
+    border-color: var(--color-rose);
+    transform: scale(1.3);
 }
 
 /* ===========================
    Container & Layout
    =========================== */
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
 }
 
 section {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-xl) 0;
+    position: relative;
 }
 
 /* ===========================
-   Title Section
+   Title Section - Enhanced
    =========================== */
 .title-section {
     text-align: center;
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-beige) 100%);
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.title-section::before {
+    content: '❦';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: var(--color-rose);
+    opacity: 0.2;
 }
 
 .main-title {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 700;
-    color: var(--color-text);
+    background: linear-gradient(135deg, var(--color-rose) 0%, var(--color-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: var(--spacing-sm);
+    letter-spacing: -1px;
+    animation: fadeInUp 1s ease;
 }
 
 .wedding-date {
-    font-size: 1.5rem;
-    color: var(--color-gold);
-    font-weight: 500;
+    font-family: var(--font-script);
+    font-size: 2.5rem;
+    color: var(--color-sage);
+    font-weight: 400;
     margin-bottom: var(--spacing-md);
+    animation: fadeInUp 1s ease 0.2s backwards;
 }
 
 .decorative-line {
-    width: 100px;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
-    margin: 0 auto;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-rose), var(--color-gold), transparent);
+    margin: var(--spacing-md) auto;
+    position: relative;
+    animation: fadeInUp 1s ease 0.4s backwards;
+}
+
+.decorative-line::before,
+.decorative-line::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gold);
+    font-size: 0.8rem;
+}
+
+.decorative-line::before {
+    left: -20px;
+}
+
+.decorative-line::after {
+    right: -20px;
 }
 
 /* ===========================
-   Section Title
+   Section Title - Enhanced
    =========================== */
 .section-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: var(--spacing-lg);
-    color: var(--color-text);
+    color: var(--color-charcoal);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-rose), var(--color-gold));
+    border-radius: 2px;
 }
 
 /* ===========================
-   Schedule Section
+   Schedule Section - Enhanced
    =========================== */
 .schedule-section {
-    background-color: var(--color-ivory);
+    background: var(--color-white);
+    position: relative;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.03);
 }
 
 .schedule-grid {
@@ -292,327 +434,515 @@ section {
 }
 
 .schedule-card {
-    background-color: white;
-    padding: var(--spacing-md);
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-champagne) 100%);
+    padding: var(--spacing-lg);
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(244, 194, 194, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.schedule-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(244, 194, 194, 0.15) 0%, transparent 70%);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.schedule-card:hover::before {
+    opacity: 1;
+    top: -25%;
+    right: -25%;
 }
 
 .schedule-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-pink);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-strong);
+    border-color: var(--color-rose);
 }
 
 .schedule-time {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: var(--font-heading);
-    color: var(--color-gold);
+    background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: var(--spacing-sm);
+    font-weight: 700;
 }
 
 .schedule-content h3 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: var(--spacing-xs);
+    color: var(--color-charcoal);
 }
 
 .schedule-content p {
-    color: var(--color-text-light);
-    font-size: 1rem;
+    color: var(--color-sage);
+    font-size: 1.05rem;
+    font-weight: 400;
 }
 
 /* ===========================
-   Location Section
+   Location Section - Enhanced
    =========================== */
 .location-section {
-    background-color: var(--color-beige);
+    background: linear-gradient(135deg, var(--color-blush) 0%, var(--color-champagne) 100%);
     text-align: center;
+    position: relative;
 }
 
 .location-card {
-    background-color: white;
-    padding: var(--spacing-lg);
-    border-radius: 16px;
-    box-shadow: var(--shadow-md);
-    max-width: 600px;
+    background: var(--color-white);
+    padding: var(--spacing-xl);
+    border-radius: 30px;
+    box-shadow: var(--shadow-medium);
+    max-width: 700px;
     margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.location-card::before {
+    content: '✦';
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 4rem;
+    color: var(--color-rose);
+    opacity: 0.1;
+}
+
+.location-card::after {
+    content: '✦';
+    position: absolute;
+    bottom: 30px;
+    left: 40px;
+    font-size: 3rem;
+    color: var(--color-gold);
+    opacity: 0.1;
 }
 
 .location-card h3 {
-    font-size: 2rem;
-    color: var(--color-gold);
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: var(--spacing-sm);
 }
 
 .location-address {
-    font-size: 1.2rem;
-    color: var(--color-text-light);
+    font-size: 1.3rem;
+    color: var(--color-sage);
     margin-bottom: var(--spacing-md);
+    line-height: 1.8;
 }
 
 /* ===========================
-   RSVP Section
+   RSVP Section - Enhanced
    =========================== */
 .rsvp-section {
-    background: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-pink) 100%);
+    background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-white) 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.rsvp-section::before {
+    content: '❦';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%) rotate(-15deg);
+    font-size: 8rem;
+    color: var(--color-rose);
+    opacity: 0.05;
+}
+
+.rsvp-section::after {
+    content: '❦';
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%) rotate(15deg);
+    font-size: 8rem;
+    color: var(--color-gold);
+    opacity: 0.05;
 }
 
 .rsvp-text {
-    font-size: 1.2rem;
-    color: var(--color-text-light);
+    font-size: 1.4rem;
+    color: var(--color-sage);
     margin-bottom: var(--spacing-md);
-    max-width: 600px;
+    max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+    font-style: italic;
 }
 
 .rsvp-note {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
+    font-size: 1rem;
+    color: var(--color-mauve);
     font-style: italic;
     margin-top: var(--spacing-sm);
 }
 
 /* ===========================
-   Buttons
+   Buttons - Enhanced
    =========================== */
 .btn-primary,
 .btn-secondary {
     display: inline-block;
-    padding: 1rem 2.5rem;
+    padding: 1.2rem 3rem;
     text-decoration: none;
     font-weight: 600;
     border-radius: 50px;
-    transition: all 0.3s ease;
-    font-size: 1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1rem;
     cursor: pointer;
     border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
 }
 
 .btn-primary {
-    background-color: var(--color-gold);
+    background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
     color: white;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-rose));
+    transition: left 0.4s ease;
+}
+
+.btn-primary:hover::before {
+    left: 0;
+}
+
+.btn-primary span {
+    position: relative;
+    z-index: 1;
 }
 
 .btn-primary:hover {
-    background-color: #C09A2A;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-strong);
 }
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--color-gold);
-    border-color: var(--color-gold);
+    color: var(--color-rose);
+    border-color: var(--color-rose);
 }
 
 .btn-secondary:hover {
-    background-color: var(--color-gold);
+    background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
     color: white;
+    border-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
 }
 
 /* ===========================
-   Footer
+   Footer - Enhanced
    =========================== */
 .footer {
-    background-color: var(--color-text);
-    color: var(--color-ivory);
+    background: linear-gradient(135deg, var(--color-charcoal), var(--color-sage));
+    color: var(--color-cream);
     text-align: center;
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-lg) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '✦';
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    opacity: 0.2;
 }
 
 .footer p {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    letter-spacing: 1px;
 }
 
 /* ===========================
-   Page Header (for sub-pages)
+   Page Header - Enhanced
    =========================== */
 .page-header {
-    margin-top: 70px;
+    margin-top: 80px;
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(180deg, var(--color-beige) 0%, var(--color-ivory) 100%);
+    background: linear-gradient(135deg, var(--color-blush) 0%, var(--color-champagne) 50%, var(--color-cream) 100%);
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '❦';
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translateY(-50%) rotate(-20deg);
+    font-size: 6rem;
+    color: var(--color-rose);
+    opacity: 0.08;
+}
+
+.page-header::after {
+    content: '❦';
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translateY(-50%) rotate(20deg);
+    font-size: 6rem;
+    color: var(--color-gold);
+    opacity: 0.08;
 }
 
 .page-title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-rose), var(--color-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 /* ===========================
-   Content Section
+   Content Section - Enhanced
    =========================== */
 .content-section {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-xl) 0;
 }
 
 .content-section.alt-bg {
-    background-color: var(--color-beige);
+    background: var(--color-white);
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.03);
 }
 
 .intro-text {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     text-align: center;
-    color: var(--color-text-light);
+    color: var(--color-sage);
     margin-bottom: var(--spacing-lg);
-    max-width: 800px;
+    max-width: 900px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.8;
 }
 
 /* ===========================
-   Accommodation Styles
+   Accommodation Styles - Enhanced
    =========================== */
 .accommodation-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
 }
 
 .accommodation-card {
-    background-color: white;
-    padding: var(--spacing-md);
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
+    background: linear-gradient(135deg, var(--color-white), var(--color-champagne));
+    padding: var(--spacing-lg);
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(244, 194, 194, 0.2);
+}
+
+.accommodation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
 }
 
 .accommodation-card h3 {
-    color: var(--color-gold);
+    color: var(--color-rose);
     margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem;
 }
 
 .booking-section {
-    background-color: white;
-    padding: var(--spacing-lg);
-    border-radius: 16px;
-    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, var(--color-white), var(--color-blush));
+    padding: var(--spacing-xl);
+    border-radius: 30px;
+    box-shadow: var(--shadow-medium);
     text-align: center;
     margin-top: var(--spacing-md);
+    border: 2px solid rgba(244, 194, 194, 0.3);
 }
 
 .booking-section h3 {
-    color: var(--color-gold);
+    color: var(--color-rose);
     margin-bottom: var(--spacing-sm);
+    font-size: 2rem;
 }
 
 .form-note {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
+    font-size: 1rem;
+    color: var(--color-mauve);
     font-style: italic;
     margin-top: var(--spacing-sm);
 }
 
 /* ===========================
-   Hotels List
+   Hotels List - Enhanced
    =========================== */
 .hotels-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: var(--spacing-md);
 }
 
 .hotel-card {
-    background-color: white;
-    padding: var(--spacing-md);
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s ease;
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
 }
 
 .hotel-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--color-rose);
 }
 
 .hotel-card h3 {
-    color: var(--color-gold);
+    color: var(--color-rose);
     margin-bottom: var(--spacing-sm);
+    font-size: 1.6rem;
 }
 
 .hotel-address,
 .hotel-distance,
 .hotel-phone {
-    color: var(--color-text-light);
+    color: var(--color-sage);
     margin-bottom: var(--spacing-xs);
+    font-size: 1.05rem;
 }
 
 /* ===========================
-   Childcare Styles
+   Childcare Styles - Enhanced
    =========================== */
 .childcare-content {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .info-card {
-    background-color: white;
-    padding: var(--spacing-md);
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
+    background: linear-gradient(135deg, var(--color-white), var(--color-champagne));
+    padding: var(--spacing-lg);
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
     margin-bottom: var(--spacing-md);
+    border: 1px solid rgba(244, 194, 194, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-medium);
 }
 
 .info-card h3 {
-    color: var(--color-gold);
+    color: var(--color-rose);
     margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem;
 }
 
 .activities-list {
-    list-style-position: inside;
-    color: var(--color-text-light);
+    list-style: none;
+    color: var(--color-sage);
     margin-top: var(--spacing-sm);
 }
 
 .activities-list li {
-    padding: 0.3rem 0;
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.activities-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--color-rose);
 }
 
 .note-section {
-    background-color: var(--color-beige);
-    padding: var(--spacing-md);
-    border-radius: 12px;
+    background: linear-gradient(135deg, var(--color-blush), var(--color-champagne));
+    padding: var(--spacing-lg);
+    border-radius: 25px;
     text-align: center;
     margin-top: var(--spacing-md);
+    box-shadow: var(--shadow-soft);
 }
 
 /* ===========================
-   Access Page Styles
+   Access Page Styles - Enhanced
    =========================== */
 .location-info {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
 }
 
 .location-detail-card {
-    background-color: white;
-    padding: var(--spacing-md);
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
+    background: linear-gradient(135deg, var(--color-white), var(--color-champagne));
+    padding: var(--spacing-lg);
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
     text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid transparent;
+}
+
+.location-detail-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
 }
 
 .location-detail-card.highlight {
-    border: 2px solid var(--color-gold);
+    border: 2px solid var(--color-rose);
+    background: linear-gradient(135deg, var(--color-white), var(--color-blush));
 }
 
 .location-detail-card h3 {
-    color: var(--color-gold);
+    color: var(--color-rose);
     margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem;
 }
 
 .location-name {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: var(--spacing-xs);
+    color: var(--color-charcoal);
 }
 
 .location-detail-card .btn-secondary {
@@ -620,48 +950,58 @@ section {
 }
 
 /* ===========================
-   Map Section
+   Map Section - Enhanced
    =========================== */
 .map-section {
-    background-color: var(--color-beige);
+    background: var(--color-white);
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.03);
 }
 
 .map-container {
-    border-radius: 16px;
+    border-radius: 25px;
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-medium);
+    border: 3px solid var(--color-blush);
 }
 
 .map-note {
     text-align: center;
-    color: var(--color-text-light);
-    font-size: 0.9rem;
+    color: var(--color-mauve);
+    font-size: 1rem;
     font-style: italic;
     margin-top: var(--spacing-sm);
 }
 
 /* ===========================
-   Directions Grid
+   Directions Grid - Enhanced
    =========================== */
 .directions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: var(--spacing-md);
 }
 
 .direction-card {
-    background-color: white;
-    padding: var(--spacing-md);
-    border-radius: 12px;
-    box-shadow: var(--shadow-sm);
+    background: linear-gradient(135deg, var(--color-white), var(--color-champagne));
+    padding: var(--spacing-lg);
+    border-radius: 25px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(244, 194, 194, 0.2);
+}
+
+.direction-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
 }
 
 .direction-card h3 {
-    color: var(--color-gold);
+    color: var(--color-rose);
     margin-bottom: var(--spacing-sm);
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
+    font-size: 1.8rem;
 }
 
 .direction-card h3 svg {
@@ -671,18 +1011,42 @@ section {
 .direction-card ul {
     margin: var(--spacing-sm) 0;
     padding-left: var(--spacing-md);
-    color: var(--color-text-light);
+    color: var(--color-sage);
 }
 
 .direction-card ul li {
-    margin: 0.5rem 0;
+    margin: 0.7rem 0;
+    line-height: 1.6;
 }
 
 .parking-info,
 .info-text {
-    color: var(--color-text-light);
+    color: var(--color-mauve);
     font-style: italic;
     margin-top: var(--spacing-sm);
+}
+
+/* ===========================
+   Animations
+   =========================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* ===========================
@@ -694,13 +1058,14 @@ section {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 80px;
         flex-direction: column;
-        background-color: var(--color-ivory);
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
         width: 100%;
         text-align: center;
-        transition: left 0.3s ease;
-        box-shadow: var(--shadow-md);
+        transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-medium);
         padding: var(--spacing-md) 0;
     }
     
@@ -713,7 +1078,7 @@ section {
     }
     
     .nav-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
+        transform: rotate(45deg) translate(8px, 8px);
     }
     
     .nav-toggle.active span:nth-child(2) {
@@ -721,40 +1086,41 @@ section {
     }
     
     .nav-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
+        transform: rotate(-45deg) translate(8px, -8px);
     }
     
     .carousel-section {
-        height: 400px;
+        height: 60vh;
+        min-height: 400px;
     }
     
     .main-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
     
     .wedding-date {
-        font-size: 1.2rem;
+        font-size: 1.8rem;
     }
     
     .section-title {
-        font-size: 2rem;
-    }
-    
-    .page-title {
         font-size: 2.2rem;
     }
     
+    .page-title {
+        font-size: 2.5rem;
+    }
+    
     .carousel-btn {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
     
     .carousel-btn.prev {
-        left: 10px;
+        left: 15px;
     }
     
     .carousel-btn.next {
-        right: 10px;
+        right: 15px;
     }
 }
 
@@ -768,23 +1134,24 @@ section {
     }
     
     .carousel-section {
-        height: 300px;
+        height: 50vh;
+        min-height: 350px;
     }
     
     .main-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .wedding-date {
-        font-size: 1rem;
-    }
-    
-    .section-title {
         font-size: 1.5rem;
     }
     
-    .page-title {
+    .section-title {
         font-size: 1.8rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
     }
     
     .schedule-grid,
@@ -797,8 +1164,27 @@ section {
     
     .btn-primary,
     .btn-secondary {
-        padding: 0.875rem 2rem;
-        font-size: 0.95rem;
+        padding: 1rem 2.5rem;
+        font-size: 1rem;
+    }
+    
+    .nav-logo {
+        font-size: 1.5rem;
+    }
+    
+    .schedule-time {
+        font-size: 2rem;
     }
 }
 
+/* Add smooth reveal on scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
