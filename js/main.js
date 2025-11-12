@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     const navbar = document.querySelector('.navbar');
-
+    
     // ---------------------------
     // Navigation interactions
     // ---------------------------
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.toggle('active');
             document.body.classList.toggle('nav-open');
         });
-
+        
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navToggle.classList.remove('active');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.remove('nav-open');
             });
         });
-
+        
         document.addEventListener('click', (event) => {
             const isInsideNav = navMenu.contains(event.target);
             const isToggle = navToggle.contains(event.target);
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    
     const handleNavbarState = () => {
         if (!navbar) return;
         if (window.scrollY > 40) {
@@ -55,24 +55,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const target = document.querySelector(href);
-            if (target) {
+                const target = document.querySelector(href);
+                if (target) {
                 event.preventDefault();
                 const offsetTop = target.getBoundingClientRect().top + window.scrollY - 96;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
             }
         });
     });
-
+    
     // ---------------------------
     // Countdown timer
     // ---------------------------
     const countdown = document.getElementById('countdown');
     if (countdown) {
-        const targetDate = new Date('2026-07-04T10:00:00+02:00'); // 4 juillet 2026, 10h00 (Paris)
+        const targetDate = new Date('2026-07-04T11:00:00'); // 4 juillet 2026, 11h00
         const unitNodes = {
             days: countdown.querySelector('[data-unit="days"]'),
             hours: countdown.querySelector('[data-unit="hours"]'),
@@ -82,18 +82,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const updateCountdown = () => {
             const now = new Date();
-            let diff = targetDate.getTime() - now.getTime();
+            const diff = targetDate - now;
 
             if (diff <= 0) {
-                diff = 0;
+                if (unitNodes.days) unitNodes.days.textContent = '00';
+                if (unitNodes.hours) unitNodes.hours.textContent = '00';
+                if (unitNodes.minutes) unitNodes.minutes.textContent = '00';
+                if (unitNodes.seconds) unitNodes.seconds.textContent = '00';
                 clearInterval(intervalId);
+                return;
             }
 
-            const totalSeconds = Math.floor(diff / 1000);
-            const days = Math.floor(totalSeconds / 86400);
-            const hours = Math.floor((totalSeconds % 86400) / 3600);
-            const minutes = Math.floor((totalSeconds % 3600) / 60);
-            const seconds = totalSeconds % 60;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
             if (unitNodes.days) unitNodes.days.textContent = String(days).padStart(2, '0');
             if (unitNodes.hours) unitNodes.hours.textContent = String(hours).padStart(2, '0');
@@ -101,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (unitNodes.seconds) unitNodes.seconds.textContent = String(seconds).padStart(2, '0');
         };
 
-        const intervalId = setInterval(updateCountdown, 1000);
         updateCountdown();
+        const intervalId = setInterval(updateCountdown, 1000);
     }
 
     // ---------------------------
@@ -112,8 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (animatedElements.length > 0 && 'IntersectionObserver' in window) {
         const observer = new IntersectionObserver(
             (entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                         observer.unobserve(entry.target);
                     }
@@ -137,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------
     const rsvpBtn = document.getElementById('rsvpBtn');
     const bookingBtn = document.getElementById('bookingBtn');
-
+    
     const showDialog = (message) => {
         const overlay = document.createElement('div');
         overlay.className = 'dialog-overlay';
@@ -149,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         document.body.appendChild(overlay);
-
+        
         const close = () => {
             overlay.classList.add('closing');
             setTimeout(() => overlay.remove(), 250);
@@ -170,13 +173,13 @@ document.addEventListener('DOMContentLoaded', () => {
             showDialog(message);
         }
     };
-
+    
     if (rsvpBtn) {
         rsvpBtn.addEventListener('click', (event) => {
             placeholderHandler(event, 'Le formulaire RSVP arrive très bientôt. Laissez-nous un petit mot si vous avez des questions. ✦');
         });
     }
-
+    
     if (bookingBtn) {
         bookingBtn.addEventListener('click', (event) => {
             placeholderHandler(event, 'Les réservations d'hébergement ouvriront prochainement. Nous vous tiendrons informés par e-mail. ✦');
