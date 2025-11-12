@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (bookingBtn) {
         bookingBtn.addEventListener('click', (event) => {
-            placeholderHandler(event, 'Les réservations d'hébergement ouvriront prochainement. Nous vous tiendrons informés par e-mail. ✦');
+            placeholderHandler(event, 'Les réservations d\'hébergement ouvriront prochainement. Nous vous tiendrons informés par e-mail. ✦');
         });
     }
 
