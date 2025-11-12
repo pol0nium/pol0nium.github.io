@@ -120,14 +120,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             },
             {
-                threshold: 0.15,
-                rootMargin: '0px 0px -10% 0px'
+                threshold: 0.08,
+                rootMargin: '0px 0px 20px 0px'
             }
         );
 
         animatedElements.forEach((element, index) => {
             element.classList.add('animate-hidden');
-            element.style.setProperty('--reveal-delay', `${index * 60}ms`);
+            element.style.setProperty('--reveal-delay', `${index * 40}ms`);
             observer.observe(element);
         });
     }
