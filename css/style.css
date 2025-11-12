@@ -1072,11 +1072,21 @@ section {
 @media (max-width: 1024px) {
     .hero-inner {
         grid-template-columns: 1fr;
+        gap: var(--space-md);
     }
 
     .hero-gallery {
         order: -1;
-        width: clamp(240px, 55vw, 320px);
+        width: clamp(200px, 50vw, 280px);
+        margin: 0 auto var(--space-md) auto;
+    }
+
+    .hero-title {
+        font-size: clamp(2.4rem, 6vw, 3.6rem);
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
     }
 
     .programme-step {
@@ -1129,11 +1139,59 @@ section {
     }
 
     .hero {
-        padding-top: calc(96px + var(--space-lg));
+        padding-top: calc(82px + var(--space-sm));
+        padding-bottom: var(--space-lg);
+    }
+
+    .hero-inner {
+        gap: var(--space-sm);
     }
 
     .hero-gallery {
-        width: clamp(220px, 75vw, 280px);
+        width: clamp(180px, 65vw, 240px);
+        margin: 0 auto var(--space-sm) auto;
+    }
+
+    .hero-kicker {
+        font-size: 0.7rem;
+        letter-spacing: 0.18rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 7vw, 2.8rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: var(--space-sm);
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-countdown {
+        gap: 0.65rem;
+    }
+
+    .countdown-item {
+        padding: 0.85rem 0.5rem;
+    }
+
+    .count-number {
+        font-size: 1.5rem;
+    }
+
+    .count-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.06rem;
     }
 
     .programme-step {
