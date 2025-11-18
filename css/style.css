@@ -1390,8 +1390,11 @@ section {
 
 @media (max-width: 480px) {
     .btn {
-        width: 100%;
         justify-content: center;
+    }
+
+    .btn-large {
+        padding: 1.1rem 1.5rem;
     }
 
     .hero-cta {
@@ -1403,7 +1406,7 @@ section {
     }
 
     .rsvp-inner {
-        padding: 1.5rem 1rem;
+        padding: 1.5rem;
     }
 
     .rsvp-section .container {
@@ -1412,7 +1415,12 @@ section {
     }
 
     .rsvp-card {
-        padding: 1.5rem 1rem;
+        padding: 1.5rem;
+    }
+    
+    .rsvp-content,
+    .rsvp-card {
+        min-width: 0;
     }
 }
 
