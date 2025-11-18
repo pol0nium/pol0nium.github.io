@@ -346,6 +346,7 @@ section {
 
 .hero {
     position: relative;
+    overflow-x: hidden;
 }
 
 .hero-pattern {
