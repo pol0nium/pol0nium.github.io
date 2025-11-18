@@ -1422,6 +1422,22 @@ section {
     .rsvp-card {
         min-width: 0;
     }
+
+    .rsvp-content .btn {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .rsvp-card a {
+        word-break: break-word;
+        overflow-wrap: break-word;
+        max-width: 100%;
+    }
+    
+    .contact-email span {
+        word-break: break-word;
+    }
 }
 
 /* --------------------------------------------------------------------- */
