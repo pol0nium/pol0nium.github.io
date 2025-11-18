@@ -276,6 +276,17 @@ section {
     font-weight: 500;
 }
 
+.location-card--primary .btn-subtle {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--color-slate);
+    box-shadow: var(--shadow-sm);
+}
+
+.location-card--primary .btn-subtle:hover {
+    background: rgba(224, 183, 196, 0.95);
+    color: var(--color-slate);
+}
+
 .btn-large {
     padding: 1.1rem 2.6rem;
     font-size: 1.05rem;
