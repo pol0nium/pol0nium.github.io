@@ -1753,10 +1753,14 @@ section {
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     white-space: nowrap;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
 .whatsapp-float:hover {
-    transform: translateY(-2px);
+    transform: translateY(-2px) translateZ(0);
     box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
 }
 
