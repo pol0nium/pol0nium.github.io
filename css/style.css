@@ -1403,12 +1403,16 @@ section {
     }
 
     .rsvp-inner {
-        padding: var(--space-md);
+        padding: 1.5rem 1rem;
     }
 
     .rsvp-section .container {
         padding-left: 0;
         padding-right: 0;
+    }
+
+    .rsvp-card {
+        padding: 1.5rem 1rem;
     }
 }
 
