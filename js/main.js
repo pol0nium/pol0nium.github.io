@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Countdown timer
     // ---------------------------
     const countdown = document.getElementById('countdown');
-    const daysUntilSpan = document.getElementById('days-until');
     if (countdown) {
         const targetDate = new Date('2026-07-04T14:00:00'); // 4 juillet 2026, 14h00
         const unitNodes = {
@@ -86,11 +85,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const diff = targetDate - now;
 
             if (diff <= 0) {
-                if (unitNodes.days) unitNodes.days.textContent = '00';
-                if (unitNodes.hours) unitNodes.hours.textContent = '00';
-                if (unitNodes.minutes) unitNodes.minutes.textContent = '00';
-                if (unitNodes.seconds) unitNodes.seconds.textContent = '00';
-                if (daysUntilSpan) daysUntilSpan.textContent = '0';
+                if (unitNodes.days) unitNodes.days.textContent = '0';
+                if (unitNodes.hours) unitNodes.hours.textContent = '0';
+                if (unitNodes.minutes) unitNodes.minutes.textContent = '0';
+                if (unitNodes.seconds) unitNodes.seconds.textContent = '0';
                 clearInterval(intervalId);
                 return;
             }
@@ -100,11 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-            if (unitNodes.days) unitNodes.days.textContent = String(days).padStart(2, '0');
-            if (unitNodes.hours) unitNodes.hours.textContent = String(hours).padStart(2, '0');
-            if (unitNodes.minutes) unitNodes.minutes.textContent = String(minutes).padStart(2, '0');
-            if (unitNodes.seconds) unitNodes.seconds.textContent = String(seconds).padStart(2, '0');
-            if (daysUntilSpan) daysUntilSpan.textContent = days;
+            if (unitNodes.days) unitNodes.days.textContent = days;
+            if (unitNodes.hours) unitNodes.hours.textContent = hours;
+            if (unitNodes.minutes) unitNodes.minutes.textContent = minutes;
+            if (unitNodes.seconds) unitNodes.seconds.textContent = seconds;
         };
 
         updateCountdown();

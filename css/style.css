@@ -399,50 +399,17 @@ section {
     margin-bottom: var(--space-lg);
 }
 
-.countdown-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+.countdown-text {
+    font-size: 1.1rem;
+    color: rgba(47, 62, 70, 0.75);
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.6;
 }
 
-.countdown-title {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
+.countdown-text span {
     font-weight: 600;
     color: var(--color-mauve);
-    text-align: center;
-    margin: 0;
-}
-
-.hero-countdown {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
-    max-width: 480px;
-    margin: 0 auto;
-}
-
-.countdown-item {
-    background: rgba(255, 255, 255, 0.78);
-    border-radius: var(--radius-md);
-    padding: 1.1rem 0.75rem;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid rgba(224, 183, 196, 0.22);
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.count-number {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--color-slate);
-    font-family: var(--font-heading);
-    display: block;
-    line-height: 1.2;
 }
 
 .count-label {
@@ -1308,9 +1275,6 @@ section {
         text-align: center;
     }
 
-    .hero-countdown {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
 }
 
 @media (max-width: 640px) {
@@ -1372,25 +1336,8 @@ section {
         justify-content: center;
     }
 
-    .countdown-title {
-        font-size: 2rem;
-    }
-
-    .hero-countdown {
-        gap: 0.65rem;
-    }
-
-    .countdown-item {
-        padding: 0.85rem 0.5rem;
-    }
-
-    .count-number {
-        font-size: 1.5rem;
-    }
-
-    .count-label {
-        font-size: 0.62rem;
-        letter-spacing: 0.06rem;
+    .countdown-text {
+        font-size: 1rem;
     }
 
     .programme-step {
@@ -1417,10 +1364,6 @@ section {
 
     .hero-cta {
         flex-direction: column;
-    }
-
-    .hero-countdown {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .section-header {
