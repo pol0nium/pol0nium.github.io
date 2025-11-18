@@ -398,6 +398,7 @@ section {
     flex-wrap: wrap;
     gap: var(--space-sm);
     margin-bottom: var(--space-lg);
+    justify-content: center;
 }
 
 .countdown-text {
