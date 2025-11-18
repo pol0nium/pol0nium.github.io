@@ -1861,3 +1861,480 @@ section {
     }
 }
 
+/* ========================================================================
+   Easter Eggs - Hearts & Party Mode
+   ======================================================================== */
+
+/* --------------------------------------------------------------------- */
+/* Easter Egg 1: Floating Hearts                                        */
+/* --------------------------------------------------------------------- */
+
+.hero-title {
+    transition: transform 0.15s ease;
+}
+
+.floating-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    animation: floatHeart 3s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-200px) translateX(50px) rotate(180deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-400px) translateX(-30px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* --------------------------------------------------------------------- */
+/* Easter Egg 2: Party Mode                                             */
+/* --------------------------------------------------------------------- */
+
+/* Party Mode Background Animation */
+.party-mode {
+    position: relative;
+    animation: partyBackground 3s ease-in-out infinite;
+}
+
+.party-mode::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 0, 150, 0.1),
+        rgba(0, 204, 255, 0.1),
+        rgba(255, 255, 0, 0.1),
+        rgba(0, 255, 0, 0.1),
+        rgba(255, 0, 150, 0.1)
+    );
+    background-size: 400% 400%;
+    animation: partyGradient 4s ease infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes partyGradient {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Speed up hero gallery in party mode */
+.party-mode .hero-gallery > img {
+    --d: 4s; /* 3x faster than normal 12s */
+}
+
+/* Party Sparkles */
+.party-sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    animation: sparkle 2s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes sparkle {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5) rotate(180deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0.5) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Disco Ball - SEXY VERSION */
+#disco-ball {
+    position: fixed;
+    top: 50px;
+    right: 50px;
+    width: 120px;
+    height: 120px;
+    z-index: 9997;
+    pointer-events: none;
+    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.6));
+}
+
+.disco-ball-sphere {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: 
+        radial-gradient(circle at 35% 35%, #ffffff, #e0e0e0 40%, #808080 80%, #404040),
+        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 6px),
+        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 6px);
+    box-shadow: 
+        0 0 60px rgba(255, 255, 255, 0.9),
+        0 0 100px rgba(255, 0, 255, 0.5),
+        inset -20px -20px 40px rgba(0, 0, 0, 0.4),
+        inset 20px 20px 40px rgba(255, 255, 255, 0.3);
+    animation: discoSpin 4s linear infinite;
+}
+
+.disco-shine {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 70%);
+    top: 20px;
+    left: 25px;
+    animation: shinePulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.disco-shine-2 {
+    width: 25px;
+    height: 25px;
+    top: 40px;
+    left: 70px;
+    animation-delay: 1s;
+}
+
+@keyframes discoSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shinePulse {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+.disco-ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 400px;
+    transform-origin: 0 0;
+    opacity: 0.6;
+    animation: rayRotate 3s linear infinite;
+    filter: blur(1px);
+}
+
+.disco-ray-1 {
+    background: linear-gradient(to bottom, rgba(255, 0, 150, 1), transparent);
+    animation-delay: 0s;
+}
+
+.disco-ray-2 {
+    background: linear-gradient(to bottom, rgba(0, 204, 255, 1), transparent);
+    animation-delay: 0.5s;
+}
+
+.disco-ray-3 {
+    background: linear-gradient(to bottom, rgba(255, 255, 0, 1), transparent);
+    animation-delay: 1s;
+}
+
+.disco-ray-4 {
+    background: linear-gradient(to bottom, rgba(0, 255, 150, 1), transparent);
+    animation-delay: 1.5s;
+}
+
+.disco-ray-5 {
+    background: linear-gradient(to bottom, rgba(255, 100, 255, 1), transparent);
+    animation-delay: 2s;
+}
+
+.disco-ray-6 {
+    background: linear-gradient(to bottom, rgba(100, 200, 255, 1), transparent);
+    animation-delay: 2.5s;
+}
+
+@keyframes rayRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Disco Reflections - floor spots */
+.disco-reflection {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    filter: blur(20px);
+    opacity: 0.4;
+    animation: reflectionPulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.disco-reflection-1 {
+    background: radial-gradient(circle, rgba(255, 0, 150, 0.6), transparent 70%);
+    top: 200px;
+    left: -50px;
+    animation-delay: 0s;
+}
+
+.disco-reflection-2 {
+    background: radial-gradient(circle, rgba(0, 204, 255, 0.6), transparent 70%);
+    top: 250px;
+    left: -80px;
+    animation-delay: 0.7s;
+}
+
+.disco-reflection-3 {
+    background: radial-gradient(circle, rgba(255, 255, 0, 0.6), transparent 70%);
+    top: 300px;
+    left: -30px;
+    animation-delay: 1.4s;
+}
+
+@keyframes reflectionPulse {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+/* Dancing Animals */
+.dancing-animal {
+    position: fixed;
+    z-index: 9996;
+    pointer-events: none;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.dancing-animal img {
+    display: block;
+    object-fit: contain;
+    animation: danceBounce 0.5s ease-in-out infinite;
+}
+
+@keyframes danceFloatRight {
+    0% {
+        left: -150px;
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-50px) rotate(180deg);
+    }
+    100% {
+        left: calc(100% + 150px);
+        transform: translateY(0) rotate(360deg);
+    }
+}
+
+@keyframes danceFloatLeft {
+    0% {
+        right: -150px;
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-50px) rotate(-180deg);
+    }
+    100% {
+        right: calc(100% + 150px);
+        transform: translateY(0) rotate(-360deg);
+    }
+}
+
+@keyframes danceBounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Party Mode UI Enhancements */
+.party-mode .btn-primary {
+    animation: partyButtonGlow 1s ease-in-out infinite;
+}
+
+@keyframes partyButtonGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 0, 150, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 204, 255, 0.8);
+    }
+}
+
+.party-mode .highlight-card,
+.party-mode .experience-card,
+.party-mode .info-card {
+    animation: partyCardPulse 2s ease-in-out infinite;
+}
+
+@keyframes partyCardPulse {
+    0%, 100% {
+        border-color: rgba(255, 0, 150, 0.3);
+    }
+    33% {
+        border-color: rgba(0, 204, 255, 0.3);
+    }
+    66% {
+        border-color: rgba(255, 255, 0, 0.3);
+    }
+}
+
+/* Party Notification */
+.party-notification {
+    position: fixed;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: linear-gradient(135deg, #ff0096, #00ccff);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 999px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    z-index: 10000;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.party-notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    #disco-ball {
+        top: 30px;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+    }
+    
+    .disco-ball-sphere {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .disco-shine {
+        width: 25px;
+        height: 25px;
+        top: 15px;
+        left: 18px;
+    }
+    
+    .disco-shine-2 {
+        width: 18px;
+        height: 18px;
+        top: 30px;
+        left: 50px;
+    }
+    
+    .disco-ray {
+        height: 250px;
+        width: 4px;
+    }
+    
+    .disco-reflection {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .dancing-animal img {
+        max-width: 60px !important;
+        max-height: 60px !important;
+    }
+    
+    .party-notification {
+        font-size: 1rem;
+        padding: 0.75rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #disco-ball {
+        top: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+    
+    .disco-ball-sphere {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .disco-shine {
+        width: 18px;
+        height: 18px;
+        top: 10px;
+        left: 12px;
+    }
+    
+    .disco-shine-2 {
+        width: 12px;
+        height: 12px;
+        top: 20px;
+        left: 35px;
+    }
+    
+    .disco-ray {
+        height: 180px;
+        width: 3px;
+    }
+    
+    .disco-reflection {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .dancing-animal img {
+        max-width: 50px !important;
+        max-height: 50px !important;
+    }
+    
+    .floating-heart {
+        font-size: 1.2rem !important;
+    }
+    
+    .party-notification {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.5rem;
+        max-width: 90%;
+    }
+}
+
