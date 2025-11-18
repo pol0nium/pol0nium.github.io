@@ -428,6 +428,7 @@ section {
     width: clamp(280px, 45vw, 380px);
     margin: 0 auto;
     position: relative;
+    padding: 10px 0;
 }
 
 .hero-gallery > img {
