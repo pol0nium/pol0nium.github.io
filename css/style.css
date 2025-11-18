@@ -399,11 +399,28 @@ section {
     margin-bottom: var(--space-lg);
 }
 
+.countdown-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.countdown-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--color-mauve);
+    text-align: center;
+    margin: 0;
+}
+
 .hero-countdown {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
     max-width: 480px;
+    margin: 0 auto;
 }
 
 .countdown-item {
@@ -1353,6 +1370,10 @@ section {
     .hero-cta .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .countdown-title {
+        font-size: 2rem;
     }
 
     .hero-countdown {
