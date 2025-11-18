@@ -921,6 +921,9 @@ section {
     border-radius: var(--radius-md);
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(176, 138, 152, 0.2);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
 }
 
 .rsvp-card a:hover {
@@ -932,6 +935,11 @@ section {
 
 .rsvp-card a svg {
     flex-shrink: 0;
+}
+
+.contact-email span {
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .rsvp-card__note {
@@ -1430,16 +1438,6 @@ section {
     .rsvp-content p,
     .rsvp-content h2 {
         text-align: left;
-    }
-
-    .rsvp-card a {
-        word-break: break-word;
-        overflow-wrap: break-word;
-        max-width: 100%;
-    }
-    
-    .contact-email span {
-        word-break: break-word;
     }
 }
 
