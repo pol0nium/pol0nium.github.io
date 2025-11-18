@@ -115,6 +115,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Cursor trail effect
+    let cursorInterval = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    function startCursorTrail() {
+        cursorInterval = setInterval(() => {
+            createCursorSparkle();
+        }, 50);
+    }
+
+    function createCursorSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'cursor-sparkle';
+        sparkle.style.left = mouseX + 'px';
+        sparkle.style.top = mouseY + 'px';
+        
+        // Random color
+        const colors = ['#ff00ff', '#00ffff', '#ffff00', '#00ff00'];
+        sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => {
+            sparkle.style.transform = `translate(${Math.random() * 20 - 10}px, ${Math.random() * 20 + 10}px) scale(0)`;
+            sparkle.style.opacity = '0';
+        }, 10);
+        
+        setTimeout(() => sparkle.remove(), 500);
+    }
+
     function activatePartyMode() {
         document.body.classList.add('party-mode');
         
@@ -123,6 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Start sparkles
         startSparkles();
+        
+        // Start cursor trail
+        startCursorTrail();
         
         // Add dancing animals
         createDancingAnimals();
@@ -146,16 +185,28 @@ document.addEventListener('DOMContentLoaded', () => {
         partyInterval = null;
         document.querySelectorAll('.party-sparkle').forEach(el => el.remove());
         
+        // Stop cursor trail
+        clearInterval(cursorInterval);
+        cursorInterval = null;
+        document.querySelectorAll('.cursor-sparkle').forEach(el => el.remove());
+        
         // Stop animal creation and remove all animals
         clearInterval(animalInterval);
         animalInterval = null;
         document.querySelectorAll('.dancing-animal').forEach(el => el.remove());
         
-        // Stop music
+        // Fade out music
         if (partyAudio) {
-            partyAudio.pause();
-            partyAudio.remove();
-            partyAudio = null;
+            const fadeAudio = setInterval(() => {
+                if (partyAudio.volume > 0.05) {
+                    partyAudio.volume -= 0.05;
+                } else {
+                    clearInterval(fadeAudio);
+                    partyAudio.pause();
+                    partyAudio.remove();
+                    partyAudio = null;
+                }
+            }, 100);
         }
         
         showPartyNotification('Party mode désactivé 😊');
@@ -234,13 +285,29 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = dancingGifs[Math.floor(Math.random() * dancingGifs.length)];
         img.alt = 'Party parrot';
         
+        // Random flip
+        if (Math.random() > 0.5) {
+            img.style.transform = 'scaleX(-1)';
+        }
+        
         animal.appendChild(img);
         
         // Random starting position and animation
         const startSide = Math.random() > 0.5 ? 'left' : 'right';
-        const startY = Math.random() * 80;
+        
+        // Improved vertical positioning:
+        // Use viewport height to ensure they spawn in view
+        // Add some padding (10%) to avoid extreme top/bottom
+        const viewportHeight = window.innerHeight;
+        const randomY = Math.random() * 80 + 10; // 10% to 90% of viewport height
+        
+        // Get scroll position to spawn relative to current view
+        const scrollY = window.scrollY;
+        const absoluteY = scrollY + (viewportHeight * (randomY / 100));
+        
         const duration = 8 + Math.random() * 6; // 8-14 seconds
-        const size = 60 + Math.random() * 50; // 60-110px (smaller for parrots)
+        const size = 40 + Math.random() * 80; // 40-120px (more variance)
+        const rotation = Math.random() * 360; // Random rotation
         
         if (startSide === 'left') {
             animal.style.left = '-150px';
@@ -250,8 +317,13 @@ document.addEventListener('DOMContentLoaded', () => {
             animal.style.animationName = 'danceFloatLeft';
         }
         
-        animal.style.top = startY + '%';
+        // Position absolutely based on scroll
+        animal.style.position = 'absolute';
+        animal.style.top = absoluteY + 'px';
         animal.style.animationDuration = duration + 's';
+        
+        // Apply random rotation to container, random flip to image
+        animal.style.transform = `rotate(${rotation}deg)`;
         
         img.style.width = size + 'px';
         img.style.height = size + 'px';

@@ -1903,7 +1903,12 @@ section {
 /* Party Mode Background Animation */
 .party-mode {
     position: relative;
-    animation: partyBackground 3s ease-in-out infinite;
+    animation: partyBackground 3s ease-in-out infinite, partyPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes partyPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.002); }
 }
 
 .party-mode::before {
@@ -1922,20 +1927,24 @@ section {
     animation: partyGradient 4s ease infinite;
     pointer-events: none;
     z-index: 1;
+    mix-blend-mode: overlay;
 }
 
 @keyframes partyGradient {
     0%, 100% {
         background-position: 0% 50%;
+        filter: hue-rotate(0deg);
     }
     50% {
         background-position: 100% 50%;
+        filter: hue-rotate(180deg);
     }
 }
 
 /* Speed up hero gallery in party mode */
 .party-mode .hero-gallery > img {
     --d: 4s; /* 3x faster than normal 12s */
+    filter: contrast(1.2) saturate(1.2); /* Enhance colors */
 }
 
 /* Party Sparkles */
@@ -1945,6 +1954,17 @@ section {
     z-index: 9998;
     animation: sparkle 2s ease-out forwards;
     will-change: transform, opacity;
+}
+
+.cursor-sparkle {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    box-shadow: 0 0 10px currentColor;
 }
 
 @keyframes sparkle {
@@ -1962,168 +1982,157 @@ section {
     }
 }
 
-/* Disco Ball - SEXY VERSION */
+/* Disco Ball - ULTIMATE VERSION (1000% BETTER) */
 #disco-ball {
     position: fixed;
-    top: 50px;
-    right: 50px;
-    width: 120px;
-    height: 120px;
+    top: 20px;
+    right: 20px;
+    width: 160px;
+    height: 160px;
     z-index: 9997;
     pointer-events: none;
-    filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.6));
+    transform-style: preserve-3d;
+    perspective: 800px;
+    filter: drop-shadow(0 0 50px rgba(255, 255, 255, 0.8));
 }
 
+/* The Ball Container */
 .disco-ball-sphere {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     background: 
-        radial-gradient(circle at 35% 35%, #ffffff, #e0e0e0 40%, #808080 80%, #404040),
-        repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 6px),
-        repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.1) 3px, rgba(0,0,0,0.1) 6px);
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9) 0%, rgba(220,220,220,0.6) 15%, rgba(100,100,100,0.8) 60%, rgba(20,20,20,1) 100%),
+        repeating-linear-gradient(0deg, transparent 0px, transparent 5px, rgba(0,0,0,0.2) 6px),
+        repeating-linear-gradient(90deg, transparent 0px, transparent 5px, rgba(0,0,0,0.2) 6px);
     box-shadow: 
-        0 0 60px rgba(255, 255, 255, 0.9),
-        0 0 100px rgba(255, 0, 255, 0.5),
-        inset -20px -20px 40px rgba(0, 0, 0, 0.4),
-        inset 20px 20px 40px rgba(255, 255, 255, 0.3);
-    animation: discoSpin 4s linear infinite;
+        inset -10px -10px 50px rgba(0,0,0,0.6),
+        inset 10px 10px 50px rgba(255,255,255,0.6),
+        0 0 30px rgba(255,255,255,0.5);
+    animation: discoSpin 8s linear infinite;
+    transform-style: preserve-3d;
 }
 
-.disco-shine {
+/* Mirror Facets Texture Overlay */
+.disco-ball-sphere::before {
+    content: '';
     position: absolute;
-    width: 40px;
-    height: 40px;
+    inset: 0;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.9), transparent 70%);
-    top: 20px;
-    left: 25px;
-    animation: shinePulse 2s ease-in-out infinite;
-    pointer-events: none;
+    background-image: 
+        linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.8) 50%, transparent 55%),
+        linear-gradient(-45deg, transparent 45%, rgba(255,255,255,0.8) 50%, transparent 55%);
+    background-size: 20px 20px;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    animation: sparkleTexture 2s linear infinite;
 }
 
-.disco-shine-2 {
-    width: 25px;
-    height: 25px;
-    top: 40px;
-    left: 70px;
-    animation-delay: 1s;
+/* Intense Core Glow */
+.disco-ball-sphere::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(255,255,255,1), transparent 40%);
+    filter: blur(5px);
+    opacity: 0.8;
+    animation: coreGlow 3s ease-in-out infinite alternate;
 }
 
-@keyframes discoSpin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-@keyframes shinePulse {
-    0%, 100% {
-        opacity: 0.8;
-        transform: scale(1);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-}
-
+/* Light Beams (Volumetric effect) */
 .disco-ray {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 6px;
-    height: 400px;
-    transform-origin: 0 0;
-    opacity: 0.6;
-    animation: rayRotate 3s linear infinite;
-    filter: blur(1px);
-}
-
-.disco-ray-1 {
-    background: linear-gradient(to bottom, rgba(255, 0, 150, 1), transparent);
-    animation-delay: 0s;
-}
-
-.disco-ray-2 {
-    background: linear-gradient(to bottom, rgba(0, 204, 255, 1), transparent);
-    animation-delay: 0.5s;
-}
-
-.disco-ray-3 {
-    background: linear-gradient(to bottom, rgba(255, 255, 0, 1), transparent);
-    animation-delay: 1s;
-}
-
-.disco-ray-4 {
-    background: linear-gradient(to bottom, rgba(0, 255, 150, 1), transparent);
-    animation-delay: 1.5s;
-}
-
-.disco-ray-5 {
-    background: linear-gradient(to bottom, rgba(255, 100, 255, 1), transparent);
-    animation-delay: 2s;
-}
-
-.disco-ray-6 {
-    background: linear-gradient(to bottom, rgba(100, 200, 255, 1), transparent);
-    animation-delay: 2.5s;
-}
-
-@keyframes rayRotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* Disco Reflections - floor spots */
-.disco-reflection {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    filter: blur(20px);
-    opacity: 0.4;
-    animation: reflectionPulse 2s ease-in-out infinite;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-top: 600px solid rgba(255, 255, 255, 0.1);
+    transform-origin: 50% 0;
+    filter: blur(8px);
     pointer-events: none;
+    mix-blend-mode: screen;
+    animation: beamRotate 4s linear infinite;
 }
 
-.disco-reflection-1 {
-    background: radial-gradient(circle, rgba(255, 0, 150, 0.6), transparent 70%);
-    top: 200px;
-    left: -50px;
-    animation-delay: 0s;
+/* Colorful Beams */
+.disco-ray-1 { border-top-color: rgba(255, 0, 150, 0.25); animation-delay: 0s; animation-duration: 5s; }
+.disco-ray-2 { border-top-color: rgba(0, 204, 255, 0.25); animation-delay: -1s; animation-duration: 6s; }
+.disco-ray-3 { border-top-color: rgba(255, 255, 0, 0.25); animation-delay: -2s; animation-duration: 7s; }
+.disco-ray-4 { border-top-color: rgba(0, 255, 150, 0.25); animation-delay: -3s; animation-duration: 4.5s; }
+.disco-ray-5 { border-top-color: rgba(255, 100, 255, 0.25); animation-delay: -1.5s; animation-duration: 5.5s; }
+.disco-ray-6 { border-top-color: rgba(100, 200, 255, 0.25); animation-delay: -2.5s; animation-duration: 6.5s; }
+
+/* Dynamic Spot Reflections */
+.disco-reflection {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(15px);
+    mix-blend-mode: screen;
+    opacity: 0.6;
+    animation: spotMove 6s ease-in-out infinite alternate;
 }
 
-.disco-reflection-2 {
-    background: radial-gradient(circle, rgba(0, 204, 255, 0.6), transparent 70%);
-    top: 250px;
-    left: -80px;
-    animation-delay: 0.7s;
+.disco-reflection-1 { width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,0,150,0.4), transparent); top: 60%; left: 20%; animation-delay: 0s; }
+.disco-reflection-2 { width: 150px; height: 150px; background: radial-gradient(circle, rgba(0,204,255,0.4), transparent); top: 30%; left: 70%; animation-delay: -2s; }
+.disco-reflection-3 { width: 180px; height: 180px; background: radial-gradient(circle, rgba(255,255,0,0.4), transparent); top: 80%; left: 50%; animation-delay: -4s; }
+
+/* Lens Flares (The "J.J. Abrams" effect) */
+.disco-shine {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+        0 0 20px 5px rgba(255, 255, 255, 0.9),
+        0 0 40px 10px rgba(255, 0, 255, 0.4),
+        0 0 80px 20px rgba(0, 255, 255, 0.4);
+    border-radius: 50%;
+    animation: flarePulse 0.5s ease-in-out infinite alternate;
+    z-index: 10;
 }
 
-.disco-reflection-3 {
-    background: radial-gradient(circle, rgba(255, 255, 0, 0.6), transparent 70%);
-    top: 300px;
-    left: -30px;
-    animation-delay: 1.4s;
+.disco-shine-2 {
+    animation-delay: 0.25s;
+    transform: translate(20px, -20px);
 }
 
-@keyframes reflectionPulse {
-    0%, 100% {
-        opacity: 0.2;
-        transform: scale(0.9);
-    }
-    50% {
-        opacity: 0.6;
-        transform: scale(1.1);
-    }
+/* Animations */
+@keyframes discoSpin {
+    0% { transform: rotate(0deg); background-position: 0 0; }
+    100% { transform: rotate(360deg); background-position: 100px 0; }
+}
+
+@keyframes sparkleTexture {
+    0% { opacity: 0.3; background-position: 0 0; }
+    50% { opacity: 0.6; }
+    100% { opacity: 0.3; background-position: 20px 20px; }
+}
+
+@keyframes coreGlow {
+    0% { opacity: 0.7; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes beamRotate {
+    0% { transform: translateX(-50%) translateY(0) rotate(0deg) scaleY(1); opacity: 0.4; }
+    50% { transform: translateX(-50%) translateY(0) rotate(180deg) scaleY(1.2); opacity: 0.8; }
+    100% { transform: translateX(-50%) translateY(0) rotate(360deg) scaleY(1); opacity: 0.4; }
+}
+
+@keyframes spotMove {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    50% { transform: translate(50px, -30px) scale(1.2); opacity: 0.7; }
+    100% { transform: translate(-30px, 40px) scale(0.9); opacity: 0.4; }
+}
+
+@keyframes flarePulse {
+    0% { opacity: 0.5; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1.2); }
 }
 
 /* Dancing Animals */
