@@ -1401,6 +1401,15 @@ section {
     .section-header {
         text-align: left;
     }
+
+    .rsvp-inner {
+        padding: var(--space-md);
+    }
+
+    .rsvp-section .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 /* --------------------------------------------------------------------- */
