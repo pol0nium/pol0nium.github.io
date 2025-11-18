@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------
     const countdown = document.getElementById('countdown');
     if (countdown) {
-        const targetDate = new Date('2026-07-04T11:00:00'); // 4 juillet 2026, 11h00
+        const targetDate = new Date('2026-07-04T14:00:00'); // 4 juillet 2026, 14h00
         const unitNodes = {
             days: countdown.querySelector('[data-unit="days"]'),
             hours: countdown.querySelector('[data-unit="hours"]'),
