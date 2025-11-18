@@ -185,4 +185,84 @@ document.addEventListener('DOMContentLoaded', () => {
             placeholderHandler(event, 'Les réservations d\'hébergement ouvriront prochainement. Nous vous tiendrons informés par e-mail. ✦');
         });
     }
+
+    // ---------------------------
+    // Carousel functionality
+    // ---------------------------
+    const carousel = document.getElementById('carouselSlides');
+    if (carousel) {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+            // Remove active class from all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+
+            // Add active class to current slide
+            if (slides[index]) {
+                slides[index].classList.add('active');
+            }
+            if (indicators[index]) {
+                indicators[index].classList.add('active');
+            }
+        };
+
+        const nextSlide = () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        };
+
+        const prevSlide = () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        };
+
+        const goToSlide = (index) => {
+            currentSlide = index;
+            showSlide(currentSlide);
+        };
+
+        // Event listeners
+        if (prevBtn) {
+            prevBtn.addEventListener('click', prevSlide);
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', nextSlide);
+        }
+
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (carousel.closest('section') && isElementInViewport(carousel)) {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                }
+            }
+        });
+
+        // Auto-play (optional - commented out by default)
+        // const autoPlayInterval = setInterval(nextSlide, 5000);
+        // carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    }
+
+    // Helper function to check if element is in viewport
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
 });

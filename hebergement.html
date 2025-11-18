@@ -50,25 +50,157 @@
                     <h2 class="section-title">Dormir directement à la Grange</h2>
                     <p class="section-intro">La Grange de la Forge met à notre disposition quelques chambres douillettes et un dortoir convivial. Parfait pour ceux qui souhaitent rester au cœur de la fête.</p>
                 </div>
-                <div class="card-grid">
-                    <article class="info-card">
-                        <h3>Chambres cosy</h3>
-                        <p><strong>Capacité :</strong> À confirmer (double + familiale).</p>
-                        <p>Chaque chambre possède sa propre atmosphère : linge frais, touches fleuries, ambiance feutrée. Parfait pour récupérer en douceur.</p>
-                        <p class="subtle-note">Liste détaillée des chambres à venir dans votre convocation.</p>
-                    </article>
-                    <article class="info-card">
-                        <h3>Espace dortoir</h3>
-                        <p><strong>Lits superposés :</strong> À préciser.</p>
-                        <p>Une solution idéale pour les amis qui veulent prolonger la nuit sans reprendre la route. Prévoir vos draps de bain.</p>
-                    </article>
-                    <article class="info-card">
-                        <h3>Réservation</h3>
-                        <p>Les couchages seront attribués en priorité aux familles avec enfants et aux personnes venant de loin.</p>
-                        <p class="subtle-note">Merci d’indiquer votre souhait d’hébergement dans le formulaire RSVP.</p>
-                        <a class="btn btn-primary" href="#" id="bookingBtn">Demander une place</a>
-                        <p class="subtle-note">Le formulaire dédié sera mis en ligne prochainement.</p>
-                    </article>
+
+                <!-- Individual Rooms Table -->
+                <div class="rooms-section">
+                    <h3 class="rooms-section-title">Chambres privées</h3>
+                    <div class="rooms-table-wrapper">
+                        <table class="rooms-table">
+                            <thead>
+                                <tr>
+                                    <th>Chambre</th>
+                                    <th>Aperçu</th>
+                                    <th>Type</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Chambre">Chambre 1</td>
+                                    <td data-label="Aperçu">
+                                        <img src="images/rooms/room1.jpg" alt="Chambre 1" class="room-thumbnail">
+                                    </td>
+                                    <td data-label="Type">Double</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Chambre">Chambre 2</td>
+                                    <td data-label="Aperçu">
+                                        <img src="images/rooms/room2.jpg" alt="Chambre 2" class="room-thumbnail">
+                                    </td>
+                                    <td data-label="Type">Double</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Chambre">Chambre 3</td>
+                                    <td data-label="Aperçu">
+                                        <img src="images/rooms/room3.jpg" alt="Chambre 3" class="room-thumbnail">
+                                    </td>
+                                    <td data-label="Type">Familiale</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-booked">Réservée</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Chambre">Chambre 4</td>
+                                    <td data-label="Aperçu">
+                                        <img src="images/rooms/room4.jpg" alt="Chambre 4" class="room-thumbnail">
+                                    </td>
+                                    <td data-label="Type">Double</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Shared Bedroom Carousel -->
+                <div class="rooms-section">
+                    <h3 class="rooms-section-title">Chambre partagée</h3>
+                    <div class="carousel-container">
+                        <div class="carousel">
+                            <div class="carousel-slides" id="carouselSlides">
+                                <img src="images/rooms/shared1.jpg" alt="Chambre partagée - Vue 1" class="carousel-slide active">
+                                <img src="images/rooms/shared2.jpg" alt="Chambre partagée - Vue 2" class="carousel-slide">
+                                <img src="images/rooms/shared3.jpg" alt="Chambre partagée - Vue 3" class="carousel-slide">
+                                <img src="images/rooms/shared4.jpg" alt="Chambre partagée - Vue 4" class="carousel-slide">
+                                <img src="images/rooms/shared5.jpg" alt="Chambre partagée - Vue 5" class="carousel-slide">
+                                <img src="images/rooms/shared6.jpg" alt="Chambre partagée - Vue 6" class="carousel-slide">
+                            </div>
+                            <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Image précédente">‹</button>
+                            <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Image suivante">›</button>
+                            <div class="carousel-indicators" id="carouselIndicators">
+                                <button class="indicator active" data-slide="0" aria-label="Image 1"></button>
+                                <button class="indicator" data-slide="1" aria-label="Image 2"></button>
+                                <button class="indicator" data-slide="2" aria-label="Image 3"></button>
+                                <button class="indicator" data-slide="3" aria-label="Image 4"></button>
+                                <button class="indicator" data-slide="4" aria-label="Image 5"></button>
+                                <button class="indicator" data-slide="5" aria-label="Image 6"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shared Bedroom Beds Table -->
+                <div class="rooms-section">
+                    <h3 class="rooms-section-title">Lits disponibles - Chambre partagée</h3>
+                    <div class="rooms-table-wrapper">
+                        <table class="rooms-table beds-table">
+                            <thead>
+                                <tr>
+                                    <th>Lit N°</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 1</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 2</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-booked">Réservé</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 3</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 4</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 5</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-booked">Réservé</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 6</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 7</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Lit N°">Lit 8</td>
+                                    <td data-label="Statut">
+                                        <span class="status-badge status-available">Disponible</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="subtle-note" style="margin-top: var(--space-md);">Merci d'indiquer votre souhait d'hébergement dans le formulaire RSVP.</p>
                 </div>
             </div>
         </section>

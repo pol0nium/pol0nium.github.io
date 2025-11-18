@@ -1,0 +1,13 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f1d7d9"/>
+  <rect width="400" height="300" fill="url(#grad3)" opacity="0.3"/>
+  <defs>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e0b7c4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f1d7d9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="48" fill="#2f3e46" text-anchor="middle" font-weight="300">Chambre 3</text>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="18" fill="#3b5f56" text-anchor="middle">Familiale</text>
+</svg>
+
