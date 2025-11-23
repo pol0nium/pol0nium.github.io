@@ -1920,7 +1920,7 @@ section {
 /* Party Mode Background Animation */
 .party-mode {
     position: relative;
-    animation: partyBackground 3s ease-in-out infinite, partyPulse 0.5s ease-in-out infinite;
+    /* animation removed to prevent stacking context issues with fixed positioning */
 }
 
 @keyframes partyPulse {
@@ -2265,9 +2265,9 @@ section {
 /* Karaoke Display */
 .karaoke-container {
     position: fixed;
-    bottom: 15%; /* Moved up from bottom: 80px */
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 10001;
     text-align: center;
     pointer-events: none;
@@ -2380,9 +2380,9 @@ section {
     }
     
     .karaoke-container {
-        bottom: 10%;
-        padding: 1rem;
         width: 95%;
+        padding: 1rem;
+        bottom: auto;
     }
     
     .karaoke-line {

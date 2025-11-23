@@ -90,6 +90,52 @@ document.addEventListener('DOMContentLoaded', () => {
     let partyAudio = null;
     let partyInterval = null;
     let animalInterval = null;
+    let karaokeContainer = null;
+    let currentLyricIndex = -1;
+
+    // Lyrics for "September" by Earth, Wind & Fire
+    // Timing adjusted for standard radio edit (approx 3:35)
+    const septemberLyrics = [
+        { time: 15.5, text: "Do you remember?" },
+        { time: 19.0, text: "The 21st night of September?" },
+        { time: 23.1, text: "Love was changing the minds of pretenders" },
+        { time: 26.5, text: "While chasing the clouds away" },
+        { time: 31.0, text: "Our hearts were ringing" },
+        { time: 35.0, text: "In the key that our souls were singing" },
+        { time: 39.1, text: "As we danced in the night" },
+        { time: 42.5, text: "Remember how the stars stole the night away" },
+        { time: 47.0, text: "Ba-dee-ya, say do you remember?" },
+        { time: 50.5, text: "Ba-dee-ya, dancing in September" },
+        { time: 54.5, text: "Ba-dee-ya, never was a cloudy day" },
+        { time: 58.0, text: "" },
+        { time: 62.5, text: "My thoughts are with you" },
+        { time: 66.0, text: "Holding hands with your heart to see you" },
+        { time: 70.0, text: "Only blue talk and love" },
+        { time: 73.5, text: "Remember how we knew love was here to stay" },
+        { time: 77.5, text: "Now December found the love that we shared in September" },
+        { time: 81.5, text: "Only blue talk and love" },
+        { time: 85.0, text: "Remember the true love we share today" },
+        { time: 89.5, text: "Ba-dee-ya, say do you remember?" },
+        { time: 93.0, text: "Ba-dee-ya, dancing in September" },
+        { time: 97.0, text: "Ba-dee-ya, never was a cloudy day" },
+        { time: 101.0, text: "" },
+        { time: 105.0, text: "Ba-dee-ya, say do you remember?" },
+        { time: 108.5, text: "Ba-dee-ya, dancing in September" },
+        { time: 112.5, text: "Ba-dee-ya, never was a cloudy day" },
+        { time: 116.5, text: "" },
+        { time: 120.5, text: "Ba-dee-ya, say do you remember?" },
+        { time: 124.0, text: "Ba-dee-ya, dancing in September" },
+        { time: 128.0, text: "Ba-dee-ya, never was a cloudy day" },
+        { time: 132.0, text: "" },
+        { time: 136.0, text: "Ba-dee-ya, say do you remember?" },
+        { time: 139.5, text: "Ba-dee-ya, dancing in September" },
+        { time: 143.5, text: "Ba-dee-ya, never was a cloudy day" },
+        { time: 147.5, text: "" },
+        { time: 151.5, text: "Ba-dee-ya, say do you remember?" },
+        { time: 155.0, text: "Ba-dee-ya, dancing in September" },
+        { time: 159.0, text: "Ba-dee-ya, never was a cloudy day" },
+        { time: 163.0, text: "" }
+    ];
 
     // Party Parrot emojis - now stored locally!
     const dancingGifs = [
@@ -192,6 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Play music
         playPartyMusic();
         
+        // Create karaoke display
+        createKaraokeDisplay();
+        
         // Show notification
         showPartyNotification('🎉 PARTY MODE ACTIVATED! 🎉');
     }
@@ -218,8 +267,18 @@ document.addEventListener('DOMContentLoaded', () => {
         animalInterval = null;
         document.querySelectorAll('.dancing-animal').forEach(el => el.remove());
         
+        // Remove karaoke display
+        if (karaokeContainer) {
+            karaokeContainer.remove();
+            karaokeContainer = null;
+        }
+        currentLyricIndex = -1;
+        
         // Fade out music
         if (partyAudio) {
+            // Remove timeupdate listener
+            partyAudio.removeEventListener('timeupdate', updateKaraokeLyrics);
+            
             const fadeAudio = setInterval(() => {
                 if (partyAudio.volume > 0.05) {
                     partyAudio.volume -= 0.05;
@@ -378,6 +437,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
+        // Add timeupdate listener for karaoke synchronization
+        partyAudio.addEventListener('timeupdate', updateKaraokeLyrics);
+        
         // Set src and load the audio only now (when party mode is activated)
         partyAudio.src = 'audio/party-music.mp3';
         partyAudio.load(); // Explicitly load the audio file
@@ -394,6 +456,53 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             document.addEventListener('click', playOnClick);
         });
+    }
+
+    function createKaraokeDisplay() {
+        karaokeContainer = document.createElement('div');
+        karaokeContainer.className = 'karaoke-container';
+        karaokeContainer.innerHTML = `
+            <div class="karaoke-line" id="karaoke-current"></div>
+            <div class="karaoke-line karaoke-next" id="karaoke-next"></div>
+        `;
+        document.body.appendChild(karaokeContainer);
+    }
+
+    function updateKaraokeLyrics() {
+        if (!partyAudio || !karaokeContainer || !partyMode) return;
+        
+        const currentTime = partyAudio.currentTime % 215; // Loop every ~215 seconds (song length)
+        
+        // Find the current lyric based on time
+        let newIndex = -1;
+        for (let i = septemberLyrics.length - 1; i >= 0; i--) {
+            if (currentTime >= septemberLyrics[i].time) {
+                newIndex = i;
+                break;
+            }
+        }
+        
+        // Only update if we've moved to a new lyric
+        if (newIndex !== currentLyricIndex && newIndex >= 0) {
+            currentLyricIndex = newIndex;
+            const currentLine = document.getElementById('karaoke-current');
+            const nextLine = document.getElementById('karaoke-next');
+            
+            if (currentLine && nextLine) {
+                // Update current line
+                currentLine.textContent = septemberLyrics[newIndex].text;
+                currentLine.classList.add('karaoke-active');
+                
+                // Update next line
+                const nextIndex = newIndex + 1 < septemberLyrics.length ? newIndex + 1 : 0;
+                nextLine.textContent = septemberLyrics[nextIndex].text;
+                
+                // Remove active class after animation
+                setTimeout(() => {
+                    currentLine.classList.remove('karaoke-active');
+                }, 500);
+            }
+        }
     }
 
     function showPartyNotification(message) {
@@ -413,4 +522,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 2500);
     }
 });
-
