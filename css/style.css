@@ -879,7 +879,7 @@ section {
     box-shadow: var(--shadow-md);
     border: 1px solid rgba(176, 138, 152, 0.22);
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.8fr);
+    grid-template-columns: 1fr;
     gap: var(--space-lg);
     align-items: center;
 }
@@ -888,6 +888,14 @@ section {
     font-style: italic;
     color: rgba(47, 62, 70, 0.55);
     margin-top: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.rsvp-content .rsvp-card {
+    margin-top: var(--space-md);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .rsvp-card {
