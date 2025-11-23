@@ -265,4 +265,22 @@ document.addEventListener('DOMContentLoaded', () => {
             rect.right <= (window.innerWidth || document.documentElement.clientWidth)
         );
     }
+
+    // ---------------------------
+    // PostHog Event Tracking
+    // ---------------------------
+    const trackableButtons = document.querySelectorAll('button, .btn');
+    trackableButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            if (window.posthog) {
+                const label = button.innerText || button.getAttribute('aria-label') || 'unknown';
+                window.posthog.capture('button_click', {
+                    label: label.trim(),
+                    id: button.id,
+                    className: button.className,
+                    tag: button.tagName.toLowerCase()
+                });
+            }
+        });
+    });
 });
