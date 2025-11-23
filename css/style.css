@@ -1877,21 +1877,23 @@ section {
     position: fixed;
     pointer-events: none;
     z-index: 9999;
-    animation: floatHeart 3s ease-out forwards;
+    animation: floatHeart 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
     will-change: transform, opacity;
+    filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.3));
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 @keyframes floatHeart {
     0% {
-        transform: translateY(0) translateX(0) rotate(0deg);
-        opacity: 1;
+        transform: translate(0, 0) scale(0) rotate(0deg);
+        opacity: 0;
     }
-    50% {
-        transform: translateY(-200px) translateX(50px) rotate(180deg);
-        opacity: 0.8;
+    15% {
+        opacity: 1;
+        transform: translate(var(--x-pop), var(--y-pop)) scale(1.2) rotate(var(--r));
     }
     100% {
-        transform: translateY(-400px) translateX(-30px) rotate(360deg);
+        transform: translate(calc(var(--x-pop) + var(--x)), calc(var(--y-pop) - 100px)) scale(0.9) rotate(calc(var(--r) * 2));
         opacity: 0;
     }
 }

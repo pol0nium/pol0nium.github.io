@@ -38,24 +38,47 @@ document.addEventListener('DOMContentLoaded', () => {
     function createFloatingHeart(startX, startY) {
         const heart = document.createElement('div');
         heart.className = 'floating-heart';
-        heart.textContent = '❤️';
         
-        // Random positioning around click point
-        const offsetX = (Math.random() - 0.5) * 200;
-        const offsetY = (Math.random() - 0.5) * 100;
+        // Random variety of hearts
+        const hearts = ['❤️', '💖', '💗', '💓', '💞', '💕', '💘', '💝', '💟', '💌'];
+        heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        
+        // Initial position (slight spread from click)
+        const offsetX = (Math.random() - 0.5) * 40;
+        const offsetY = (Math.random() - 0.5) * 40;
         
         heart.style.left = (startX + offsetX) + 'px';
         heart.style.top = (startY + offsetY) + 'px';
-        heart.style.fontSize = (1.5 + Math.random() * 1.5) + 'rem';
-        heart.style.animationDelay = (Math.random() * 0.5) + 's';
-        heart.style.animationDuration = (2 + Math.random()) + 's';
+        
+        // Visual variation
+        const size = 1 + Math.random() * 2; // 1rem to 3rem
+        heart.style.fontSize = size + 'rem';
+        
+        // Physics variables for CSS animation
+        const driftX = (Math.random() - 0.5) * 300 + 'px'; // Drift left or right
+        const rotate = (Math.random() - 0.5) * 360 + 'deg'; // Random rotation
+        
+        // Pop direction (upwards burst)
+        // Angle between 220 and 320 degrees (upwards cone)
+        const angle = (Math.random() * 100 + 220) * (Math.PI / 180);
+        const velocity = 80 + Math.random() * 150; 
+        const popX = Math.cos(angle) * (velocity * 0.8) + 'px';
+        const popY = Math.sin(angle) * velocity + 'px'; // Negative Y is up
+        
+        heart.style.setProperty('--x', driftX);
+        heart.style.setProperty('--r', rotate);
+        heart.style.setProperty('--x-pop', popX);
+        heart.style.setProperty('--y-pop', popY);
+        
+        heart.style.animationDelay = '0s'; // Instant start
+        heart.style.animationDuration = (1.5 + Math.random() * 1) + 's'; // Quicker fade out
         
         document.body.appendChild(heart);
         
         // Remove after animation
         setTimeout(() => {
             heart.remove();
-        }, 3500);
+        }, 5000);
     }
 
     // ============================================
