@@ -269,18 +269,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // ---------------------------
     // PostHog Event Tracking
     // ---------------------------
-    const trackableButtons = document.querySelectorAll('button, .btn');
-    trackableButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            if (window.posthog) {
-                const label = button.innerText || button.getAttribute('aria-label') || 'unknown';
-                window.posthog.capture('button_click', {
-                    label: label.trim(),
-                    id: button.id,
-                    className: button.className,
-                    tag: button.tagName.toLowerCase()
-                });
-            }
+    document.body.addEventListener('click', (event) => {
+        // Find the closest clickable element (button or link)
+        const target = event.target.closest('a, button, .btn');
+        
+        if (!target || !window.posthog) return;
+
+        // Generic button/link click tracking
+        const label = target.innerText || target.getAttribute('aria-label') || 'unknown';
+        const href = target.getAttribute('href') || '';
+        
+        window.posthog.capture('click_interaction', {
+            label: label.trim(),
+            id: target.id,
+            className: target.className,
+            tag: target.tagName.toLowerCase(),
+            href: href
         });
+
+        // Conversion Goal: Confirmer ma présence (RSVP)
+        if (href.includes('forms.gle') || label.toLowerCase().includes('confirmer ma présence')) {
+            window.posthog.capture('conversion', {
+                goal: 'confirmer_presence',
+                source: 'rsvp_button'
+            });
+        }
+
+        // Conversion Goal: Rejoignez nous sur whatsapp
+        if (href.includes('chat.whatsapp.com') || label.toLowerCase().includes('rejoignez-nous sur whatsapp')) {
+            window.posthog.capture('conversion', {
+                goal: 'whatsapp_join',
+                source: 'whatsapp_button'
+            });
+        }
     });
 });
