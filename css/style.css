@@ -442,11 +442,18 @@ section {
     object-fit: cover;
     border: 12px solid rgba(248, 246, 242, 0.95);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 
+        0 12px 24px -10px rgba(47, 62, 70, 0.15),
+        0 4px 8px -4px rgba(47, 62, 70, 0.1);
     z-index: 2;
     animation: 
         slide var(--d) infinite,
         z-order var(--d) infinite steps(1);
+    /* Remove any outline or unwanted borders */
+    outline: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .hero-gallery img:last-child {
