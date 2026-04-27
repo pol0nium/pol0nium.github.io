@@ -1568,6 +1568,10 @@ section {
     width: 100%;
 }
 
+.beds-table .status-badge {
+    text-transform: none;
+}
+
 /* Carousel */
 .carousel-container {
     max-width: 900px;
